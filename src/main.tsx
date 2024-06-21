@@ -1,17 +1,40 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
+
+import { Home } from "./Home";
+import { Eligibility } from "./Eligibility";
+import { Apply } from "./Apply";
+import { Applications } from "./Applications";
+import { Rewards } from "./Rewards";
+import { Layout } from "./Layout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
-  },
-  {
-    path: "/about",
-    element: <div>About 2</div>,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/eligibility",
+        element: <Eligibility />,
+      },
+      {
+        path: "/apply",
+        element: <Apply />,
+      },
+      {
+        path: "/applications",
+        element: <Applications />,
+      },
+      {
+        path: "/rewards",
+        element: <Rewards />,
+      },
+    ],
   },
 ]);
 
