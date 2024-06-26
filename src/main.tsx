@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import "./styles/index.css";
+
 import { Home } from "./Home";
 import { Eligibility } from "./Eligibility";
 import { Apply } from "./Apply";
