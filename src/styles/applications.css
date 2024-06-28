@@ -12,7 +12,14 @@
 .applications-container table th,
 .applications-container table td {
   text-align: center;
-  @apply px-4 py-2;
+}
+
+.applications-container table td {
+  @apply text-xs;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @apply px-4 py-3;
 }
 
 .applications-container table th:first-child,
@@ -25,12 +32,14 @@
   text-align: right;
 }
 
+.applications-container table td:last-child {
+  text-overflow: clip;
+  @apply px-0 md:px-4;
+}
+
 .applications-container table thead tr {
   background: #b1f0ff;
 }
-
-.applications-container table thead tr th {
-};
 
 .applications-container table thead tr th:first-child {
   @apply rounded-l-xl pl-4;
@@ -48,13 +57,28 @@
   @apply rounded-l-xl;
 }
 
+.applications-container table td:first-child:before {
+  content: ".";
+  text-indent: -9999px;
+  width: 18px;
+  height: 18px;
+  background: #dbdbdc;
+  display: inline-block;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  margin-right: 12px;
+  @apply hidden sm:inline-block;
+
+}
+
 .applications-container table tr.odd td:last-child {
   @apply rounded-r-xl;
 }
 
 .applications-container table td .badge {
   display: inline-block;
-  min-width: 120px;
+  width: auto;
+  @apply px-1 sm:px-3 sm:min-w-[100px] lg:min-w-[120px];
   text-align: center;
 }
 
