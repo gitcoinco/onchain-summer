@@ -1,42 +1,102 @@
 import "./styles/applications.css";
 import "./styles/index.css";
+import loadingImg from "./assets/loading.gif";
+import { useEffect, useState } from "react";
 
-const statuses = ["approved", "pending", "rejected"];
+const API_URL = "https://ezrf-impact.vercel.app/api/trpc/";
+
+const encodeInput = (json: unknown = {}) =>
+  encodeURIComponent(JSON.stringify({ json }));
+
+const callApi = async (path: string) =>
+  fetch(API_URL + path, {
+    headers: {
+      "content-type": "application/json",
+      "round-id": "on-chain-summer-test",
+    },
+  });
+
+function useApplications() {
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [applications, setApplications] = useState([]);
+
+  useEffect(() => {
+    callApi(
+      "projects.list?input=" +
+        encodeInput({
+          orderBy: "time",
+          sortOrder: "asc",
+          limit: 10,
+          skip: 0,
+        }),
+    ).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setApplications(data.result.data.json);
+        });
+      }
+
+      setLoading(false);
+    });
+  }, []);
+
+  return { error, loading, applications };
+}
 
 export function Applications() {
-  const applications = new Array(10).fill(null).map((_) => ({
-    status: statuses[Math.floor(Math.random() * statuses.length)],
-  }));
+  const { error, loading, applications } = useApplications();
+  console.log(applications);
 
   return (
     <div>
-      <h2 className="text-xl mb-4">All applications ({applications.length})</h2>
-      <div className="applications-container">
-        <table className="table-auto">
-          <thead>
-            <tr>
-              <th>Project Name</th>
-              <th>Metric</th>
-              <th>Metric</th>
-              <th>Metric</th>
-              <th>Application Status</th>
-            </tr>
-          </thead>
+      <h2 className="text-2xl mb-4">
+        All applications {!error && !loading && `(${applications.length})`}
+      </h2>
 
-          <tbody>
-            {applications.map((a, index) => (
-              <tr className={index % 2 === 0 ? "even" : "odd"} key={index}>
-                <td>Project Name</td>
-                <td>Metric</td>
-                <td>Metric</td>
-                <td>Metric</td>
-                <td>
-                  <span className={`badge ${a.status}`}>{a.status}</span>
-                </td>
+      <div className="applications-container">
+        {loading && (
+          <div className="text-center">
+            <img
+              src={loadingImg}
+              alt="Loading..."
+              style={{ height: 20, margin: "0 auto" }}
+            />
+          </div>
+        )}
+
+        {!loading && (
+          <table className="table-auto">
+            <thead>
+              <tr>
+                <th colSpan={2}>
+                  <span className="hidden md:inline">Project </span>
+                  Name
+                </th>
+                <th>Metric</th>
+                <th>Metric</th>
+                <th>Metric</th>
+                <th>
+                  <span className="hidden md:inline">Application </span>Status
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {applications.map((a, index) => (
+                <tr className={index % 2 === 0 ? "even" : "odd"} key={index}>
+                  <td colSpan={2}>{a.metadata?.name}</td>
+                  <td>Metric</td>
+                  <td>Metric</td>
+                  <td>Metric</td>
+                  <td>
+                    <span className={`badge ${a.status}`}>{a.status}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );

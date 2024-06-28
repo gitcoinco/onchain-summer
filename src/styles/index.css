@@ -2,11 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Inter-Regular";
+  src: url("/Inter-Regular.ttf") format("truetype");
+}
+
 html, body {
   height: 100%;
 }
 
 body {
+  font-family: Inter-Regular, sans-serif;
   @apply text-black;
   background: rgba(212,255,255,1);
   background: no-repeat linear-gradient(180deg, rgba(182,233,251,1) 0%, rgba(212,255,255,1) 100%);
