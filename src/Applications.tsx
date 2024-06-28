@@ -3,6 +3,13 @@ import "./styles/index.css";
 import loadingImg from "./assets/loading.gif";
 import { useEffect, useState } from "react";
 
+type Application = {
+  metadata: {
+    name: string;
+  };
+  status: string;
+};
+
 const API_URL = "https://ezrf-impact.vercel.app/api/trpc/";
 
 const encodeInput = (json: unknown = {}) =>
@@ -19,7 +26,7 @@ const callApi = async (path: string) =>
 function useApplications() {
   const [error, setError] = useState<Error | undefined>(undefined);
   const [loading, setLoading] = useState(true);
-  const [applications, setApplications] = useState([]);
+  const [applications, setApplications] = useState<Application[]>([]);
 
   useEffect(() => {
     callApi(
@@ -33,7 +40,7 @@ function useApplications() {
     ).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          setApplications(data.result.data.json);
+          setApplications(data.result.data.json as Application[]);
         });
       } else {
         setError(new Error("Failed to fetch applications"));
