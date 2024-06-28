@@ -17,7 +17,7 @@ const callApi = async (path: string) =>
   });
 
 function useApplications() {
-  const [error, setError] = useState("");
+  const [error, setError] = useState<Error | undefined>(undefined);
   const [loading, setLoading] = useState(true);
   const [applications, setApplications] = useState([]);
 
@@ -35,6 +35,8 @@ function useApplications() {
         res.json().then((data) => {
           setApplications(data.result.data.json);
         });
+      } else {
+        setError(new Error("Failed to fetch applications"));
       }
 
       setLoading(false);
@@ -46,7 +48,6 @@ function useApplications() {
 
 export function Applications() {
   const { error, loading, applications } = useApplications();
-  console.log(applications);
 
   return (
     <div>
@@ -65,7 +66,11 @@ export function Applications() {
           </div>
         )}
 
-        {!loading && (
+        {!loading && error !== undefined && (
+          <div className="text-center">Something went wrong</div>
+        )}
+
+        {!loading && error === undefined && (
           <table className="table-auto">
             <thead>
               <tr>
