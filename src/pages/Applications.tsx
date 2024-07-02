@@ -1,6 +1,6 @@
-import "./styles/applications.css";
-import "./styles/index.css";
-import loadingImg from "./assets/loading.gif";
+import "@/styles/applications.css";
+import "@/styles/index.css";
+import loadingImg from "@/assets/loading.gif";
 import { useEffect, useState } from "react";
 
 type Application = {
@@ -36,7 +36,7 @@ function useApplications() {
           sortOrder: "asc",
           limit: 10,
           skip: 0,
-        }),
+        })
     ).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
