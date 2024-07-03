@@ -1,7 +1,6 @@
-import "@/styles/applications.css";
-import "@/styles/index.css";
+import { useEffect, useMemo, useState } from "react";
+import { Column, Table } from "@/components/Table";
 import loadingImg from "@/assets/loading.gif";
-import { useEffect, useState } from "react";
 
 type Application = {
   metadata: {
@@ -53,16 +52,64 @@ function useApplications() {
   return { error, loading, applications };
 }
 
+interface ApplicationRow {
+  name: string;
+  metric1: string;
+  metric2: string;
+  metric3: string;
+  status: React.ReactNode;
+}
+
+const columns: Array<Column<ApplicationRow>> = [
+  {
+    key: "name",
+    label: "Project name",
+  },
+  {
+    key: "metric1",
+    label: "Metric",
+    sort: true,
+  },
+  {
+    key: "metric2",
+    label: "Metric",
+    sort: true,
+  },
+  {
+    key: "metric3",
+    label: "Metric",
+    sort: true,
+  },
+  {
+    key: "status",
+    label: "Application status",
+    sort: true,
+    type: "badge",
+  },
+];
+
 export function Applications() {
   const { error, loading, applications } = useApplications();
 
+  const rows: Array<ApplicationRow> = useMemo(
+    () =>
+      applications.map((application, index) => ({
+        name: application.metadata?.name || "",
+        metric1: `${index + 1}`,
+        metric2: `${index + 2}`,
+        metric3: `${index + 3}`,
+        status: application.status,
+      })),
+    [applications]
+  );
+
   return (
-    <div>
+    <div className={"xl:w-[1280px] min-w-[956px] m-auto"}>
       <h2 className="text-2xl mb-4">
         All applications {!error && !loading && `(${applications.length})`}
       </h2>
 
-      <div className="applications-container">
+      <div className="px-4 py-6 rounded-3xl bg-white-40 applications-container">
         {loading && (
           <div className="text-center">
             <img
@@ -78,36 +125,7 @@ export function Applications() {
         )}
 
         {!loading && error === undefined && (
-          <table className="table-auto">
-            <thead>
-              <tr>
-                <th colSpan={2}>
-                  <span className="hidden md:inline">Project </span>
-                  Name
-                </th>
-                <th>Metric</th>
-                <th>Metric</th>
-                <th>Metric</th>
-                <th>
-                  <span className="hidden md:inline">Application </span>Status
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {applications.map((a, index) => (
-                <tr className={index % 2 === 0 ? "even" : "odd"} key={index}>
-                  <td colSpan={2}>{a.metadata?.name}</td>
-                  <td>Metric</td>
-                  <td>Metric</td>
-                  <td>Metric</td>
-                  <td>
-                    <span className={`badge ${a.status}`}>{a.status}</span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <Table columns={columns} data={rows} />
         )}
       </div>
     </div>
