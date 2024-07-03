@@ -44,17 +44,20 @@ export function Table<T extends Record<string, any>>({
     setSortConfig({ key, direction });
   }
 
+  // needs style for mobile
   return (
-    <table className="w-full table-fixed">
-      <thead>
-        <HeadRow columns={columns} handleSort={handleSort} />
-      </thead>
-      <div className="h-4 w-full" />
-      <tbody>
-        {sortedData.map((item, index) => (
-          <Row index={index} rowData={item} columns={columns} />
-        ))}
-      </tbody>
-    </table>
+    <div className="overflow-x-auto">
+      <table className="min-w-full table-fixed">
+        <thead>
+          <HeadRow columns={columns} handleSort={handleSort} />
+        </thead>
+        <div className="h-4" />
+        <tbody>
+          {sortedData.map((item, index) => (
+            <Row index={index} rowData={item} columns={columns} />
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
