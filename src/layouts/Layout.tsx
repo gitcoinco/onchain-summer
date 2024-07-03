@@ -1,19 +1,27 @@
 import { Navbar } from "@/components/Navbar";
 import { Outlet, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
-// To be changed the theme / css
-const backgroundColor: { [key: string]: string } = {
-  "/": "bg-[#FF8744]",
-  "/applications": "bg-[#FF8744]",
-  "/rewards": "",
-};
 export function Layout() {
   const { pathname } = useLocation();
 
+  useEffect(() => {
+    const bodyClass =
+      pathname !== "/" && pathname !== "/applications"
+        ? "bg-blue-gradient"
+        : "bg-orange-sunset";
+
+    document.body.classList.add(bodyClass);
+
+    return () => {
+      document.body.classList.remove(bodyClass);
+    };
+  }, [pathname]);
+
   return (
-    <div className={`h-screen ${backgroundColor[pathname] || ""}`}>
+    <div className="h-screen">
       <Navbar />
-      <main>
+      <main className="p-4">
         <Outlet />
       </main>
     </div>
