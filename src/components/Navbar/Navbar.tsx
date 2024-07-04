@@ -11,8 +11,8 @@ const links = [
 
 export function Navbar() {
   return (
-    <nav className="bg-transparent px-4 md:px-20 h-[64px] flex justify-between items-center">
-      <div className="flex items-center justify-between w-full md:w-auto">
+    <nav className="bg-transparent pl-20 pr-4 lg:pr-20 h-[64px] flex justify-between items-center">
+      <div className="flex items-center justify-between w-full">
         <Link to="/">
           <img src={logo} alt="Logo" className="h-7 w-auto" />
         </Link>

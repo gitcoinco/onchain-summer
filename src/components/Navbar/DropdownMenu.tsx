@@ -23,10 +23,10 @@ export function DropdownMenu({ links }: DropdownMenuProps) {
       <ButtonBurger
         isOpen={isOpen}
         onClick={toggleMenu}
-        className="md:hidden"
+        className="lg:hidden"
       />
       {isOpen && (
-        <div className="md:hidden absolute top-8 right-0 bg-transparent shadow-lg rounded-lg p-4">
+        <div className="lg:hidden absolute top-8 right-0 bg-transparent shadow-lg rounded-lg p-4">
           {links.map(({ target, label }) => (
             <NavbarLink
               key={target}
