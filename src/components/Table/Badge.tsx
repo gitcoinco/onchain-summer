@@ -1,21 +1,23 @@
 import clsx from "clsx";
 
 interface BadgeProps {
-  value: any;
+  value: string;
+  className?: string;
 }
 
-export function Badge({ value }: BadgeProps) {
+export function Badge({ value, className = "" }: BadgeProps) {
   return (
     <div
       className={clsx(
         "w-[164px] h-[29px] sm:min-w-[100px] lg:min-w-[120px]",
-        "bg-white rounded-full border",
+        "bg-white rounded-full border-2",
         "flex items-center justify-center",
         "font-normal text-sm/[21px] text-center",
+        className,
         {
-          "border-green-100": value === "approved",
-          "border-orange-100": value === "rejected",
-          "border-gray-100": value === "pending",
+          "border-green-300": value === "approved",
+          "border-orange-300": value === "rejected",
+          "border-gray-300": value === "pending",
         }
       )}
     >
