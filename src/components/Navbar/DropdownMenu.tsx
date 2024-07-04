@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ButtonBurger } from "./ButtonBurger";
 import { NavbarLink } from "./NavbarLink";
 import { useLocation } from "react-router-dom";
+import clsx from "clsx";
 
 interface DropdownMenuProps {
   links: Array<{ target: string; label: string }>;
@@ -26,7 +27,14 @@ export function DropdownMenu({ links }: DropdownMenuProps) {
         className="lg:hidden"
       />
       {isOpen && (
-        <div className="lg:hidden absolute top-8 right-0 bg-transparent shadow-lg rounded-lg p-4">
+        <div
+          className={clsx(
+            "lg:hidden",
+            "absolute top-8 right-0",
+            "bg-transparent shadow-lg rounded-lg p-4",
+            "flex flex-col gap-2 items-center"
+          )}
+        >
           {links.map(({ target, label }) => (
             <NavbarLink
               key={target}
