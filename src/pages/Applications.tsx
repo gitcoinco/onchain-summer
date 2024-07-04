@@ -40,28 +40,29 @@ const columns: Array<Column<ApplicationRow>> = [
 ];
 
 export function Applications() {
-  const { error, loading, applications } = useApplications();
+  const { isError, isPending, data: applications } = useApplications();
+
+  const nApplications =
+    applications?.length !== undefined ? `(${applications.length})` : "";
 
   const rows: Array<ApplicationRow> = useMemo(
     () =>
-      applications.map((application, index) => ({
+      applications?.map((application, index) => ({
         name: application.metadata?.name || "",
         metric1: `${index + 1}`,
         metric2: `${index + 2}`,
         metric3: `${index + 3}`,
         status: application.status,
-      })),
+      })) || [],
     [applications]
   );
 
   return (
     <div className={"w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
-      <h2 className="text-2xl mb-4">
-        All applications {!error && !loading && `(${applications.length})`}
-      </h2>
+      <h2 className="text-2xl mb-4">All applications {nApplications}</h2>
 
       <div className="px-4 py-6 rounded-3xl bg-white-40">
-        {loading && (
+        {isPending && (
           <div className="text-center">
             <img
               src={loadingImg}
@@ -71,13 +72,11 @@ export function Applications() {
           </div>
         )}
 
-        {!loading && error !== undefined && (
+        {!isPending && isError && (
           <div className="text-center">Something went wrong</div>
         )}
 
-        {!loading && error === undefined && (
-          <Table columns={columns} data={rows} />
-        )}
+        {!isPending && !isError && <Table columns={columns} data={rows} />}
       </div>
     </div>
   );
