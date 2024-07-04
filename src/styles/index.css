@@ -12,29 +12,6 @@ html, body {
 }
 
 body {
-  font-family: Inter-Regular, sans-serif;
+  font-family: "Inter-Regular", sans-serif;
   @apply text-black;
-  background: rgba(212,255,255,1);
-  background: no-repeat linear-gradient(180deg, rgba(182,233,251,1) 0%, rgba(212,255,255,1) 100%);
-}
-
-main {
-  margin: 0 auto;
-  @apply p-4 lg:max-w-[1024px];
-}
-
-.badge {
-  @apply text-black bg-white text-xs font-medium me-2 px-5 py-0.5 rounded-full border;
-}
-
-.badge.approved {
-  @apply border-green-100;
-}
-
-.badge.rejected {
-  @apply border-orange-100;
-}
-
-.badge.pending {
-  @apply border-gray-100;
 }

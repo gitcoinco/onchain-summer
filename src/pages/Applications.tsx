@@ -1,69 +1,62 @@
-import "@/styles/applications.css";
-import "@/styles/index.css";
+import { useMemo } from "react";
+import { Column, Table } from "@/components/Table";
 import loadingImg from "@/assets/loading.gif";
-import { useEffect, useState } from "react";
+import { useApplications } from "@/hooks/useApplications";
+import { ApplicationCard } from "@/components/ApplicationList/ApplicationCard";
+import { ApplicationData } from "@/types";
 
-type Application = {
-  metadata: {
-    name: string;
-  };
-  status: string;
-};
-
-const API_URL = "https://ezrf-impact.vercel.app/api/trpc/";
-
-const encodeInput = (json: unknown = {}) =>
-  encodeURIComponent(JSON.stringify({ json }));
-
-const callApi = async (path: string) =>
-  fetch(API_URL + path, {
-    headers: {
-      "content-type": "application/json",
-      "round-id": "on-chain-summer-test",
-    },
-  });
-
-function useApplications() {
-  const [error, setError] = useState<Error | undefined>(undefined);
-  const [loading, setLoading] = useState(true);
-  const [applications, setApplications] = useState<Application[]>([]);
-
-  useEffect(() => {
-    callApi(
-      "projects.list?input=" +
-        encodeInput({
-          orderBy: "time",
-          sortOrder: "asc",
-          limit: 10,
-          skip: 0,
-        })
-    ).then((res) => {
-      if (res.ok) {
-        res.json().then((data) => {
-          setApplications(data.result.data.json as Application[]);
-        });
-      } else {
-        setError(new Error("Failed to fetch applications"));
-      }
-
-      setLoading(false);
-    });
-  }, []);
-
-  return { error, loading, applications };
-}
+const columns: Array<Column<ApplicationData>> = [
+  {
+    key: "name",
+    label: "Project name",
+  },
+  {
+    key: "metric1",
+    label: "Metric",
+    sort: true,
+  },
+  {
+    key: "metric2",
+    label: "Metric",
+    sort: true,
+  },
+  {
+    key: "metric3",
+    label: "Metric",
+    sort: true,
+  },
+  {
+    key: "status",
+    label: "Application status",
+    sort: true,
+    type: "badge",
+  },
+];
 
 export function Applications() {
-  const { error, loading, applications } = useApplications();
+  const { isError, isPending, data: applications } = useApplications();
+
+  const nApplications =
+    applications?.length !== undefined ? `(${applications.length})` : "";
+
+  const applicationsData: Array<ApplicationData> = useMemo(
+    () =>
+      applications?.map((application, index) => ({
+        name: application.metadata?.name || "",
+        metric1: `${index + 1}`,
+        metric2: `${index + 2}`,
+        metric3: `${index + 3}`,
+        status: application.status,
+      })) || [],
+    [applications]
+  );
 
   return (
-    <div>
-      <h2 className="text-2xl mb-4">
-        All applications {!error && !loading && `(${applications.length})`}
-      </h2>
+    <div className={"w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
+      <h2 className="text-2xl mb-4">All applications {nApplications}</h2>
 
-      <div className="applications-container">
-        {loading && (
+      <div className="lg:px-4 lg:py-6 lg:rounded-3xl lg:bg-white-40">
+        {isPending && (
           <div className="text-center">
             <img
               src={loadingImg}
@@ -73,41 +66,21 @@ export function Applications() {
           </div>
         )}
 
-        {!loading && error !== undefined && (
+        {!isPending && isError && (
           <div className="text-center">Something went wrong</div>
         )}
 
-        {!loading && error === undefined && (
-          <table className="table-auto">
-            <thead>
-              <tr>
-                <th colSpan={2}>
-                  <span className="hidden md:inline">Project </span>
-                  Name
-                </th>
-                <th>Metric</th>
-                <th>Metric</th>
-                <th>Metric</th>
-                <th>
-                  <span className="hidden md:inline">Application </span>Status
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {applications.map((a, index) => (
-                <tr className={index % 2 === 0 ? "even" : "odd"} key={index}>
-                  <td colSpan={2}>{a.metadata?.name}</td>
-                  <td>Metric</td>
-                  <td>Metric</td>
-                  <td>Metric</td>
-                  <td>
-                    <span className={`badge ${a.status}`}>{a.status}</span>
-                  </td>
-                </tr>
+        {!isPending && !isError && (
+          <>
+            <div className="hidden lg:block">
+              <Table columns={columns} data={applicationsData} />
+            </div>
+            <div className="lg:hidden flex flex-col gap-2">
+              {applicationsData.map((application) => (
+                <ApplicationCard application={application} />
               ))}
-            </tbody>
-          </table>
+            </div>
+          </>
         )}
       </div>
     </div>
