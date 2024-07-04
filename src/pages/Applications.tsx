@@ -2,16 +2,10 @@ import { useMemo } from "react";
 import { Column, Table } from "@/components/Table";
 import loadingImg from "@/assets/loading.gif";
 import { useApplications } from "@/hooks/useApplications";
+import { ApplicationCard } from "@/components/ApplicationList/ApplicationCard";
+import { ApplicationData } from "@/types";
 
-interface ApplicationRow {
-  name: string;
-  metric1: string;
-  metric2: string;
-  metric3: string;
-  status: React.ReactNode;
-}
-
-const columns: Array<Column<ApplicationRow>> = [
+const columns: Array<Column<ApplicationData>> = [
   {
     key: "name",
     label: "Project name",
@@ -45,7 +39,7 @@ export function Applications() {
   const nApplications =
     applications?.length !== undefined ? `(${applications.length})` : "";
 
-  const rows: Array<ApplicationRow> = useMemo(
+  const applicationsData: Array<ApplicationData> = useMemo(
     () =>
       applications?.map((application, index) => ({
         name: application.metadata?.name || "",
@@ -61,7 +55,7 @@ export function Applications() {
     <div className={"w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
       <h2 className="text-2xl mb-4">All applications {nApplications}</h2>
 
-      <div className="px-4 py-6 rounded-3xl bg-white-40">
+      <div className="lg:px-4 lg:py-6 lg:rounded-3xl lg:bg-white-40">
         {isPending && (
           <div className="text-center">
             <img
@@ -76,7 +70,18 @@ export function Applications() {
           <div className="text-center">Something went wrong</div>
         )}
 
-        {!isPending && !isError && <Table columns={columns} data={rows} />}
+        {!isPending && !isError && (
+          <>
+            <div className="hidden lg:block">
+              <Table columns={columns} data={applicationsData} />
+            </div>
+            <div className="lg:hidden flex flex-col gap-2">
+              {applicationsData.map((application) => (
+                <ApplicationCard application={application} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
