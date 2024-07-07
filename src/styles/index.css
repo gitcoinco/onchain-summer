@@ -15,3 +15,9 @@ body {
   font-family: "Inter-Regular", sans-serif;
   @apply text-black;
 }
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
