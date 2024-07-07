@@ -1,59 +1,75 @@
-import { useMemo } from "react";
-import { Column, Table } from "@/components/Table";
+import { useMemo, useState } from "react";
 import loadingImg from "@/assets/loading.gif";
-import { useApplications } from "@/hooks/useApplications";
-import { ApplicationCard } from "@/components/ApplicationList/ApplicationCard";
-import { ApplicationData } from "@/types";
+import { useApplicationsMetrics } from "@/hooks";
+import { ProjectWithMetrics } from "@/services/ezrfApi/types";
+import { ProjectsTable } from "@/components/ProjectsTable";
+import { ProjectsList } from "@/components/ProjectsList";
 
-const columns: Array<Column<ApplicationData>> = [
-  {
-    key: "name",
-    label: "Project name",
-  },
-  {
-    key: "metric1",
-    label: "Metric",
-    sort: true,
-  },
-  {
-    key: "metric2",
-    label: "Metric",
-    sort: true,
-  },
-  {
-    key: "metric3",
-    label: "Metric",
-    sort: true,
-  },
-  {
-    key: "status",
-    label: "Application status",
-    sort: true,
-    type: "badge",
-  },
-];
+const sortProjects = (
+  projects: ProjectWithMetrics[] | undefined,
+  sortConfig: {
+    key: string;
+    direction: "ascending" | "descending";
+  }
+) => {
+  if (!projects) return [];
+
+  return [...projects].sort((a, b) => {
+    if (sortConfig.key) {
+      let aValue: any;
+      let bValue: any;
+
+      if (sortConfig.key.startsWith("metrics.")) {
+        const metricKey = sortConfig.key.replace("metrics.", "");
+        aValue = a.metrics[metricKey];
+        bValue = b.metrics[metricKey];
+      } else {
+        aValue = a[sortConfig.key as keyof ProjectWithMetrics];
+        bValue = b[sortConfig.key as keyof ProjectWithMetrics];
+      }
+
+      if (typeof aValue === "string" && typeof bValue === "string") {
+        return sortConfig.direction === "ascending"
+          ? aValue.localeCompare(bValue)
+          : bValue.localeCompare(aValue);
+      }
+
+      if (typeof aValue === "number" && typeof bValue === "number") {
+        return sortConfig.direction === "ascending"
+          ? aValue - bValue
+          : bValue - aValue;
+      }
+    }
+    return 0;
+  });
+};
 
 export function Applications() {
-  const { isError, isPending, data: applications } = useApplications();
+  const [sortConfig, setSortConfig] = useState<{
+    key: string;
+    direction: "ascending" | "descending";
+  }>({ key: "name", direction: "ascending" });
 
-  const nApplications =
-    applications?.length !== undefined ? `(${applications.length})` : "";
+  const { isError, isPending, data: projects } = useApplicationsMetrics();
 
-  const applicationsData: Array<ApplicationData> = useMemo(
-    () =>
-      applications?.map((application, index) => ({
-        name: application.metadata?.name || "",
-        metric1: `${index + 1}`,
-        metric2: `${index + 2}`,
-        metric3: `${index + 3}`,
-        status: application.status,
-      })) || [],
-    [applications]
+  const sortedProjects = useMemo(
+    () => sortProjects(projects, sortConfig),
+    [projects, sortConfig]
   );
 
+  const requestSort = (key: string) => {
+    let direction: "ascending" | "descending" = "ascending";
+    if (sortConfig.key === key && sortConfig.direction === "ascending") {
+      direction = "descending";
+    }
+    setSortConfig({ key, direction });
+  };
+
+  const nApplications = projects?.length || 0;
+
   return (
-    <div className={"w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
-      <h2 className="text-2xl mb-4">All applications {nApplications}</h2>
+    <div className={"w-full mx-auto px-4 sm:px-6 lg:px-8"}>
+      <h2 className="text-2xl mb-4">All applications {`(${nApplications})`}</h2>
 
       <div className="lg:px-4 lg:py-6 lg:rounded-3xl lg:bg-white-40">
         {isPending && (
@@ -73,12 +89,16 @@ export function Applications() {
         {!isPending && !isError && (
           <>
             <div className="hidden lg:block">
-              <Table columns={columns} data={applicationsData} />
+              <ProjectsTable
+                projects={sortedProjects}
+                handleSort={requestSort}
+              />
             </div>
             <div className="lg:hidden flex flex-col gap-2">
-              {applicationsData.map((application) => (
-                <ApplicationCard application={application} />
-              ))}
+              <ProjectsList
+                projects={sortedProjects}
+                handleSort={requestSort}
+              />
             </div>
           </>
         )}
