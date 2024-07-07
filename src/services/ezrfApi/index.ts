@@ -1,2 +1,2 @@
-export { fetchApplications } from "./applications";
-export { type Application } from "./types";
+export { fetchApplications, fetchMetrics } from "./applications";
+export { type ProjectsResponse } from "./types";

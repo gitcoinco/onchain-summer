@@ -1,4 +1,2 @@
 export const EZRF_API_URL = "https://ezrf-impact.vercel.app/api/trpc/";
-
-export const encodeInput = (json: unknown = {}) =>
-  encodeURIComponent(JSON.stringify({ json }));
+export const ROUND_ID = "on-chain-summer-test";
