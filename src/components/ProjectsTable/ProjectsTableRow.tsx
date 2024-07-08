@@ -20,11 +20,7 @@ export function ProjectsTableRow({ index, project }: ProjectsTableRowProps) {
           <img
             src={project.profile.profileImageUrl}
             alt={project.name}
-            style={{
-              width: "20px",
-              height: "20px",
-              marginRight: "8px",
-            }}
+            className="size-6 shrink-0 rounded-full mr-2 border border-black"
           />
           <span
             className="font-normal text-lg/10 truncate"
