@@ -3,7 +3,7 @@ import { useApplicationsMetrics } from "@/hooks";
 import { ProjectWithMetrics } from "@/services/ezrfApi/types";
 import { sortProjects } from "./utils";
 
-interface SortConfig {
+export interface SortConfig {
   key: string;
   direction: "ascending" | "descending";
 }
