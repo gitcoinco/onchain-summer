@@ -1,16 +1,32 @@
 import clsx from "clsx";
 import sortIcon from "@/assets/sortIcon.svg";
-import { ProjectWithMetrics } from "@/services/ezrfApi/types";
+import sortIconAsc from "@/assets/sortIconAsc.svg";
+import sortIconDesc from "@/assets/sortIconDesc.svg";
+import { SortConfig, useProjectsContext } from "@/contexts/projectsContext";
 
-interface ProjectsTableHeadRowProps {
-  projects: ProjectWithMetrics[];
-  handleSort: (key: string) => void;
-}
+const SortIcon = ({
+  field,
+  sortConfig,
+}: {
+  field: string;
+  sortConfig: SortConfig;
+}) => {
+  if (field !== sortConfig.key) {
+    return <img src={sortIcon} alt="Sort Icon" className="size-5" />;
+  } else {
+    return (
+      <img
+        src={sortConfig.direction === "ascending" ? sortIconAsc : sortIconDesc}
+        alt="Sort Icon"
+        className="size-5"
+      />
+    );
+  }
+};
 
-export function ProjectsTableHeadRow({
-  projects,
-  handleSort,
-}: ProjectsTableHeadRowProps) {
+export function ProjectsTableHeadRow() {
+  const { projects, handleSort, sortConfig } = useProjectsContext();
+
   return (
     <tr className="h-[55px] bg-white-50">
       <th
@@ -32,7 +48,7 @@ export function ProjectsTableHeadRow({
             {"Project Name"}
           </span>
 
-          <img src={sortIcon} alt="Sort Icon" className="size-5" />
+          <SortIcon field="name" sortConfig={sortConfig} />
         </div>
       </th>
       {projects.length > 0 &&
@@ -52,7 +68,7 @@ export function ProjectsTableHeadRow({
               <span className="font-medium text-2xl/10 truncate" title={metric}>
                 {metric}
               </span>
-              <img src={sortIcon} alt="Sort Icon" className="size-5" />
+              <SortIcon field={`metrics.${metric}`} sortConfig={sortConfig} />
             </div>
           </th>
         ))}
@@ -71,7 +87,7 @@ export function ProjectsTableHeadRow({
           <span className="font-medium text-2xl/10 truncate" title={"Status"}>
             {"Status"}
           </span>
-          <img src={sortIcon} alt="Sort Icon" className="size-5" />
+          <SortIcon field="status" sortConfig={sortConfig} />
         </div>
       </th>
     </tr>

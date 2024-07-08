@@ -1,12 +1,9 @@
-import { ProjectWithMetrics } from "@/services/ezrfApi/types";
+import { useProjectsContext } from "@/contexts/projectsContext";
 import { ApplicationCard } from "./ProjectCard";
 
-interface ProjectsListProps {
-  projects: ProjectWithMetrics[];
-  handleSort: (key: string) => void;
-}
+export function ProjectsList() {
+  const { projects } = useProjectsContext();
 
-export function ProjectsList({ projects }: ProjectsListProps) {
   return projects.map((project) => (
     <ApplicationCard key={project.id} project={project} />
   ));

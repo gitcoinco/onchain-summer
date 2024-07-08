@@ -1,18 +1,15 @@
-import { ProjectWithMetrics } from "@/services/ezrfApi/types";
 import { ProjectsTableRow } from "./ProjectsTableRow";
 import { ProjectsTableHeadRow } from "./ProjectsTableHeadRow";
+import { useProjectsContext } from "@/contexts/projectsContext";
 
-interface ProjectsTableProps {
-  projects: ProjectWithMetrics[];
-  handleSort: (key: string) => void;
-}
+export function ProjectsTable() {
+  const { projects } = useProjectsContext();
 
-export function ProjectsTable({ projects, handleSort }: ProjectsTableProps) {
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full table-fixed">
         <thead>
-          <ProjectsTableHeadRow projects={projects} handleSort={handleSort} />
+          <ProjectsTableHeadRow />
         </thead>
         <div className="h-4" />
         <tbody>

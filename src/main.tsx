@@ -8,6 +8,7 @@ import { Applications, Apply, Eligibility, Home, Rewards } from "./pages";
 import { Layout } from "./layouts";
 
 import "./styles/index.css";
+import { ProjectsProvider } from "./contexts/projectsContext";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/applications",
-        element: <Applications />,
+        element: (
+          <ProjectsProvider>
+            <Applications />
+          </ProjectsProvider>
+        ),
       },
       {
         path: "/rewards",
