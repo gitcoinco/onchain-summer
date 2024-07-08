@@ -1,13 +1,13 @@
-import { Badge } from "../Table/Badge";
+import { Badge } from "../ProjectsTable/Badge";
 import clsx from "clsx";
-import { ApplicationData } from "@/types";
+import { ProjectWithMetrics } from "@/services/ezrfApi/types";
 
 interface ApplicationCardProps {
-  application: ApplicationData;
+  project: ProjectWithMetrics;
 }
 
-export function ApplicationCard({ application }: ApplicationCardProps) {
-  const { name, status, metric1, metric2, metric3 } = application;
+export function ApplicationCard({ project }: ApplicationCardProps) {
+  const { name, status, metrics } = project;
 
   return (
     <div className="bg-white-40 shadow rounded-xl p-4">
@@ -18,9 +18,9 @@ export function ApplicationCard({ application }: ApplicationCardProps) {
       <div className="mt-2 p-4 flex flex-col gap-2 items-center">
         <span className="font-bold">Metrics</span>
         <div className="flex flex-col w-full sm:flex-row gap-2 flex-wrap justify-center">
-          <MetricCard name="MetricName1" value={metric1} />
-          <MetricCard name="MetricName2" value={metric2} />
-          <MetricCard name="MetricName3 very large" value={metric3} />
+          {Object.entries(metrics).map(([key, value]) => (
+            <MetricCard key={key} name={key} value={value} />
+          ))}
         </div>
       </div>
     </div>
@@ -41,8 +41,12 @@ function MetricCard({ name, value }: MetricCardProps) {
         "flex sm:flex-col gap-2 justify-between"
       )}
     >
-      <span>{name}</span>
-      <span>{value}</span>
+      <span className="truncate" title={name}>
+        {name}
+      </span>
+      <span className="truncate" title={value.toString()}>
+        {value}
+      </span>
     </div>
   );
 }

@@ -1,0 +1,1 @@
+export { useApplicationsMetrics } from "./useApplicationsMetrics";
