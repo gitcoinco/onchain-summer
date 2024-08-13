@@ -34,6 +34,11 @@ export const sortProjects = (
           ? aValue - bValue
           : bValue - aValue;
       }
+
+      if (typeof aValue === "number" || typeof bValue === "number") {
+        if (!aValue) return sortConfig.direction === "ascending"? 1 : -1;
+        if (!bValue) return sortConfig.direction === "ascending"? 1 : -1;
+      }
     }
     return 0;
   });
