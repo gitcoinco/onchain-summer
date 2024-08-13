@@ -36,8 +36,7 @@ export function ProjectsTableHeadRow() {
         colSpan={2}
         onClick={() => handleSort("name")}
       >
-
-
+        
         <div className="flex items-center cursor-pointer">
           <span
             className="pr-2 text-2xl font-medium truncate"
@@ -49,7 +48,6 @@ export function ProjectsTableHeadRow() {
           <SortIcon field="name" sortConfig={sortConfig} />
         </div>
       </th>
-
 
       {getMetrics().map((metric, index) => (
         <th
