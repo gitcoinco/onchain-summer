@@ -3,7 +3,7 @@ import sortIcon from "@/assets/sortIcon.svg";
 import sortIconAsc from "@/assets/sortIconAsc.svg";
 import sortIconDesc from "@/assets/sortIconDesc.svg";
 import { SortConfig, useProjectsContext } from "@/contexts/projectsContext";
-import { getDisplayName, getMetrics, metricMap } from "@/services/metrics";
+import { getDisplayName, getMetrics } from "@/services/metrics";
 
 const SortIcon = ({
   field,
