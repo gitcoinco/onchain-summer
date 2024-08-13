@@ -32,15 +32,10 @@ export function ProjectsTableRow({ index, project }: ProjectsTableRowProps) {
         </div>
       </td>
       {getMetrics().map((metric, index) => (
-
         <td key={index}>
           <div className="flex items-center justify-center w-full">
-            <span
-              className="font-normal truncate text-lg/10"
-              
-            >
-              {project.metrics[metric] ? project.metrics[metric].toString() : '0'}
-              
+            <span className="font-normal truncate text-lg/10">
+              {project.metrics[metric] ? project.metrics[metric].toFixed(2).toString() : '0'}
             </span>
           </div>
         </td>

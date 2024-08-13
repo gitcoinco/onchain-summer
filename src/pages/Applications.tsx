@@ -2,6 +2,7 @@ import loadingImg from "@/assets/loading.gif";
 import { ProjectsTable } from "@/components/ProjectsTable";
 import { ProjectsList } from "@/components/ProjectsList";
 import { useProjectsContext } from "@/contexts/projectsContext";
+import hero from "@/assets/hero.svg"
 
 export function Applications() {
   const { projects, isPending, isError } = useProjectsContext();
@@ -10,7 +11,14 @@ export function Applications() {
 
   return (
     <div className={"w-full mx-auto px-4 sm:px-6 lg:px-8"}>
-      <h2 className="text-2xl mb-4">All applications {`(${nApplications})`}</h2>
+
+      <img
+        src={hero}
+        alt="Hero..."
+        style={{ height: 450, margin: "0 auto" }}
+      />
+      
+      <h2 className="pt-12 mb-4 text-2xl">All applications {`(${nApplications})`}</h2>
 
       <div className="lg:px-4 lg:py-6 lg:rounded-3xl lg:bg-white-40">
         {isPending && (
@@ -32,7 +40,7 @@ export function Applications() {
             <div className="hidden lg:block">
               <ProjectsTable />
             </div>
-            <div className="lg:hidden flex flex-col gap-2">
+            <div className="flex flex-col gap-2 lg:hidden">
               <ProjectsList />
             </div>
           </>

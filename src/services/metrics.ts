@@ -2,16 +2,16 @@
 
 
  const metricMap: Record<string, string> = {
-    'address_count': 'Address Count',
-    'days_since_first_transaction': 'Days Since First Transaction',
-    'gas_fees_sum': 'Gas Fees Sum',
-    'gas_fees_sum_6_months': 'Gas Fees Sum 6 Months',
-    'medium_activity_address_count_90_days': '90 Day Medium Activity Address Count',
-    'multi_project_address_count_90_days': ' 90 Day Multi Project Address Count',
-    'new_address_count_90_days': 'New Address Count 90 Days',
-    'returning_address_count_90_days': 'Returning Address Count 90 Days',
-    'transaction_count': 'Transaction Count',
-    'transaction_count_6_months': 'Transaction Count 6 Months'
+    'address_count': 'Users',
+    'days_since_first_transaction': 'Age',
+    'gas_fees_sum': 'Gas Fees',
+    'gas_fees_sum_6_months': '6mo Gas Fees',
+    'medium_activity_address_count_90_days': '90d Medium Activity Address Count',
+    'multi_project_address_count_90_days': ' 90d Multi Project Address Count',
+    'new_address_count_90_days': '90d User Acquisition',
+    'returning_address_count_90_days': '90d Retention',
+    'transaction_count': 'Total Tx',
+    'transaction_count_6_months': '6m Tx Count'
 }
 
 export function getDisplayName(metric: string) {

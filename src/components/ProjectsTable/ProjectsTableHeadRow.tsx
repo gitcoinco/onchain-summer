@@ -26,18 +26,21 @@ const SortIcon = ({
 };
 
 export function ProjectsTableHeadRow() {
-  const { projects, handleSort, sortConfig } = useProjectsContext();
+  const { handleSort, sortConfig } = useProjectsContext();
 
   return (
+    
     <tr className="h-[55px] bg-white-50">
       <th
         className="pl-4 rounded-l-xl"
         colSpan={2}
         onClick={() => handleSort("name")}
       >
-        <div className="flex items-center justify-start w-full cursor-pointer">
+
+
+        <div className="flex items-center cursor-pointer">
           <span
-            className="font-medium truncate text-2xl/10"
+            className="pr-2 text-2xl font-medium truncate"
             title={"Project Name"}
           >
             Project Name
@@ -48,24 +51,19 @@ export function ProjectsTableHeadRow() {
       </th>
 
 
-
-
       {getMetrics().map((metric, index) => (
         <th
           key={index}
           className="pl-2"
-          onClick={() => handleSort(`metrics.${metric}`)}
-        >
+          onClick={() => handleSort(`metrics.${metric}`)}>
           <div
-            className="flex items-center justify-center w-full font-medium cursor-pointer text-1xl"
-          >
-
+            className="flex items-center px-12 align-text-top cursor-pointer text-1xl ">
             {getDisplayName(metric)}
-
             <SortIcon field={`metrics.${metric}`} sortConfig={sortConfig} />
           </div>
         </th>
       ))}
+      
       <th
         className="pl-2 pr-4 rounded-r-xl"
         colSpan={2}
