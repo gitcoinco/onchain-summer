@@ -3,6 +3,8 @@ import { ProjectsTable } from "@/components/ProjectsTable";
 import { ProjectsList } from "@/components/ProjectsList";
 import { useProjectsContext } from "@/contexts/projectsContext";
 import hero from "@/assets/hero.svg"
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+// import 'react-tabs/style/react-tabs.css';
 
 export function Leaderboard() {
   const { projects, isPending, isError } = useProjectsContext();
@@ -17,6 +19,23 @@ export function Leaderboard() {
         alt="Hero..."
         style={{ height: 450, margin: "0 auto" }}
       />
+
+<Tabs className="pt-24">
+    <TabList>
+      <Tab>Title 1</Tab>
+      <Tab>Title 2</Tab>
+    </TabList>
+
+    <TabPanel>
+      <h2>Any content 1</h2>
+    </TabPanel>
+    <TabPanel>
+      <h2>Any content 2</h2>
+    </TabPanel>
+  </Tabs>
+
+
+      
 
       <h2 className="pt-12 pb-8 text-3xl text-white">Projects {`(${nApplications})`}</h2>
 

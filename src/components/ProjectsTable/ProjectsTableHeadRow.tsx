@@ -62,11 +62,6 @@ export function ProjectsTableHeadRow() {
           </div>
         </th>
       </tr>
-      
     </thead>
-
-
- 
-
   );
 }

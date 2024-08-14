@@ -17,7 +17,8 @@ export default {
         "black": "#000000",
         "light-blue": "#A9BFFF",
         "light-sunset": "#D8BE7D",
-        "transparent-sunset": "#C28D6C"
+        "transparent-sunset": "#C28D6C",
+        "gray-300":"#979998"
         
         
       },
