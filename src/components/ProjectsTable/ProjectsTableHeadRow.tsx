@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import sortIcon from "@/assets/sortIcon.svg";
 import sortIconAsc from "@/assets/sortIconAsc.svg";
 import sortIconDesc from "@/assets/sortIconDesc.svg";
@@ -33,7 +32,7 @@ export function ProjectsTableHeadRow() {
     <thead className="text-xl ">
       
       <tr >
-        <th scope="col" className="px-6 py-3 rounded-l-3xl bg-transparent-sunset" onClick={() => handleSort("name")}>
+        <th scope="col" className="sticky left-0 px-6 py-3 rounded-l-3xl bg-transparent-sunset" onClick={() => handleSort("name")}>
           <div className="flex items-center">
             Project Name
             <SortIcon field="name" sortConfig={sortConfig} />

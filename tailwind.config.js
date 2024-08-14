@@ -18,7 +18,8 @@ export default {
         "light-blue": "#A9BFFF",
         "light-sunset": "#D8BE7D",
         "transparent-sunset": "#C28D6C",
-        "gray-300":"#979998"
+        "rockon":"#666666"
+        // "liggray-300":"#979998"
         
         
       },

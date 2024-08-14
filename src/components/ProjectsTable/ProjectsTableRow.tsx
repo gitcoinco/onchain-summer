@@ -16,7 +16,7 @@ export function ProjectsTableRow({ index, project }: ProjectsTableRowProps) {
     <tr className="text-lg"
       key={project.id}
     >
-      <td scope="row" className={clsx("px-6 py-2 ", { "rounded-l-3xl bg-transparent-sunset": oddRow })}>
+      <td scope="row" className={clsx("px-6 py-2 sticky left-0", { "rounded-l-3xl bg-transparent-sunset": oddRow }, {"bg-rockon": !oddRow})}>
         <div className="flex items-center">
 
           <img
