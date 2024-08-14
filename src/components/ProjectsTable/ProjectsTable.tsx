@@ -6,12 +6,9 @@ export function ProjectsTable() {
   const { projects } = useProjectsContext();
 
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full table-fixed">
-        <thead>
-          <ProjectsTableHeadRow />
-        </thead>
-        <div className="h-4" />
+    <div className="relative overflow-x-auto">
+      <table className="w-full text-xl text-black border-collapse">
+        <ProjectsTableHeadRow />
         <tbody>
           {projects.map((project, index) => (
             <ProjectsTableRow

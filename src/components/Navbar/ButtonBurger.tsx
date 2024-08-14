@@ -14,11 +14,11 @@ export function ButtonBurger({
   return (
     <button
       onClick={onClick}
-      className={`flex flex-col justify-center items-center ${className}`}
+      className={`flex flex-col justify-center items-center w-20 h-20 ${className}`}
     >
       <span
         className={clsx(
-          "bg-black block h-0.5 w-6 rounded-sm",
+          "bg-white block h-0.5 w-6 rounded-sm",
           "transition-all duration-300 ease-out",
           {
             "rotate-45 translate-y-1": isOpen,
@@ -28,7 +28,7 @@ export function ButtonBurger({
       ></span>
       <span
         className={clsx(
-          "bg-black block h-0.5 w-6 rounded-sm my-0.5",
+          "bg-white block h-0.5 w-6 rounded-sm my-0.5",
           "transition-all duration-300 ease-out",
           {
             "opacity-0": isOpen,
@@ -38,7 +38,7 @@ export function ButtonBurger({
       ></span>
       <span
         className={clsx(
-          "bg-black block h-0.5 w-6 rounded-sm",
+          "bg-white block h-0.5 w-6 rounded-sm",
           "transition-all duration-300 ease-out",
           {
             "-rotate-45 -translate-y-1": isOpen,

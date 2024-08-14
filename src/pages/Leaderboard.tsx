@@ -1,26 +1,44 @@
 import loadingImg from "@/assets/loading.gif";
 import { ProjectsTable } from "@/components/ProjectsTable";
-import { ProjectsList } from "@/components/ProjectsList";
 import { useProjectsContext } from "@/contexts/projectsContext";
 import hero from "@/assets/hero.svg"
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+// import 'react-tabs/style/react-tabs.css';
 
-export function Applications() {
+export function Leaderboard() {
   const { projects, isPending, isError } = useProjectsContext();
 
   const nApplications = projects?.length || 0;
 
   return (
-    <div className={"w-full mx-auto px-4 sm:px-6 lg:px-8"}>
+    <div className={"w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24"}>
 
       <img
         src={hero}
         alt="Hero..."
         style={{ height: 450, margin: "0 auto" }}
       />
-      
-      <h2 className="pt-12 mb-4 text-2xl">All applications {`(${nApplications})`}</h2>
 
-      <div className="lg:px-4 lg:py-6 lg:rounded-3xl lg:bg-white-40">
+<Tabs className="pt-24">
+    <TabList>
+      <Tab>Award 1</Tab>
+      <Tab>Award 2</Tab>
+    </TabList>
+
+    <TabPanel>
+      <h2></h2>
+    </TabPanel>
+    <TabPanel>
+      <h2></h2>
+    </TabPanel>
+  </Tabs>
+
+
+      
+
+      <h2 className="pt-12 pb-8 text-3xl text-white">Projects {`(${nApplications})`}</h2>
+
+      <div className="px-4 py-6 rounded-3xl bg-rockon">
         {isPending && (
           <div className="text-center">
             <img
@@ -36,14 +54,9 @@ export function Applications() {
         )}
 
         {!isPending && !isError && (
-          <>
-            <div className="hidden lg:block">
-              <ProjectsTable />
-            </div>
-            <div className="flex flex-col gap-2 lg:hidden">
-              <ProjectsList />
-            </div>
-          </>
+          <div className="">
+            <ProjectsTable />
+          </div>
         )}
       </div>
     </div>

@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { ProjectWithMetrics } from "@/services/ezrfApi/types";
 import { Badge } from "./Badge";
+import { getMetrics } from "@/services/metrics";
 
 interface ProjectsTableRowProps {
   index: number;
@@ -11,42 +12,44 @@ export function ProjectsTableRow({ index, project }: ProjectsTableRowProps) {
   const oddRow = index % 2 !== 0;
 
   return (
-    <tr
+
+    <tr className="text-lg"
       key={project.id}
-      className={clsx("h-[55px]", { "bg-white-40": oddRow })}
     >
-      <td className="rounded-l-2xl pl-4" colSpan={2}>
-        <div className="flex items-center justify-start w-full">
+      <td scope="row" className={clsx("px-6 py-2 sticky left-0", { "rounded-l-3xl bg-transparent-sunset": oddRow }, {"bg-rockon": !oddRow})}>
+        <div className="flex items-center">
+
           <img
             src={project.profile.profileImageUrl}
             alt={project.name}
-            className="size-6 shrink-0 rounded-full mr-2 border border-black"
+            className="mr-2 border border-black rounded-full size-6 shrink-0"
           />
           <span
-            className="font-normal text-lg/10 truncate"
+            className="font-normal truncate text-lg/10"
             title={project.name}
           >
             {project.name}
           </span>
         </div>
       </td>
-      {Object.values(project.metrics).map((value, index) => (
-        <td key={index}>
-          <div className="flex items-center justify-center w-full">
-            <span
-              className="font-normal text-lg/10 truncate"
-              title={value.toString()}
-            >
-              {value}
+
+      {getMetrics().map((metric, index) => (
+        <td key={index} className={clsx("px-12", { "bg-transparent-sunset": oddRow })}>
+          <div className="">
+            <span className="">
+              {project.metrics[metric] ? project.metrics[metric].toFixed(2).toString() : '0'}
             </span>
           </div>
         </td>
       ))}
-      <td className="rounded-r-2xl pr-4" colSpan={2}>
-        <div className="flex items-center justify-end w-full">
+
+      <td className={clsx("", { "rounded-r-3xl bg-transparent-sunset": oddRow })} colSpan={2}>
+        <div className="flex items-center px-12 ">
           <Badge value={project.status} />
         </div>
       </td>
+
     </tr>
+
   );
 }

@@ -6,10 +6,11 @@ export function Layout() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const bodyClass =
-      pathname !== "/" && pathname !== "/applications"
-        ? "bg-blue-gradient"
-        : "bg-orange-sunset";
+    const bodyClass = "bg-black"
+    // TODO leaving this in because we might need dynamic body classes and this code works
+      // pathname !== "/" && pathname !== "/applications"
+      //   ? "bg-blue-gradient"
+      //   : "bg-black";
 
     document.body.classList.add(bodyClass);
 

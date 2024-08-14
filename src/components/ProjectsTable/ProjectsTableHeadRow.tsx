@@ -1,8 +1,8 @@
-import clsx from "clsx";
 import sortIcon from "@/assets/sortIcon.svg";
 import sortIconAsc from "@/assets/sortIconAsc.svg";
 import sortIconDesc from "@/assets/sortIconDesc.svg";
 import { SortConfig, useProjectsContext } from "@/contexts/projectsContext";
+import { getDisplayName, getMetrics } from "@/services/metrics";
 
 const SortIcon = ({
   field,
@@ -25,71 +25,42 @@ const SortIcon = ({
 };
 
 export function ProjectsTableHeadRow() {
-  const { projects, handleSort, sortConfig } = useProjectsContext();
+  const { handleSort, sortConfig } = useProjectsContext();
 
   return (
-    <tr className="h-[55px] bg-white-50">
-      <th
-        className="rounded-l-xl pl-4"
-        colSpan={2}
-        onClick={() => handleSort("name")}
-      >
-        <div
-          className={clsx(
-            "flex items-center justify-start gap",
-            "w-full",
-            "cursor-pointer"
-          )}
-        >
-          <span
-            className="font-medium text-2xl/10 truncate"
-            title={"Project Name"}
-          >
-            {"Project Name"}
-          </span>
 
-          <SortIcon field="name" sortConfig={sortConfig} />
-        </div>
-      </th>
-      {projects.length > 0 &&
-        Object.keys(projects[0].metrics).map((metric) => (
+    <thead className="text-xl ">
+      
+      <tr >
+        <th scope="col" className="sticky left-0 px-6 py-3 rounded-l-3xl bg-transparent-sunset" onClick={() => handleSort("name")}>
+          <div className="flex items-center">
+            Project Name
+            <SortIcon field="name" sortConfig={sortConfig} />
+          </div>
+        </th>
+        {getMetrics().map((metric, index) => (
           <th
-            key={metric}
-            className="pl-2"
-            onClick={() => handleSort(`metrics.${metric}`)}
-          >
+            key={index}
+            scope="col"
+            className="px-12 bg-transparent-sunset text-nowrap"
+            onClick={() => handleSort(`metrics.${metric}`)}>
             <div
-              className={clsx(
-                "flex items-center w-full gap",
-                "justify-center",
-                "cursor-pointer"
-              )}
-            >
-              <span className="font-medium text-2xl/10 truncate" title={metric}>
-                {metric}
-              </span>
+              className="flex items-center">
+              {getDisplayName(metric)}
               <SortIcon field={`metrics.${metric}`} sortConfig={sortConfig} />
             </div>
           </th>
         ))}
-      <th
-        className="rounded-r-xl pl-2 pr-4"
-        colSpan={2}
-        onClick={() => handleSort("status")}
-      >
-        <div
-          className={clsx(
-            "flex items-center justify-end gap",
-            "w-full",
-            "cursor-pointer"
-          )}
-        >
-          <span className="font-medium text-2xl/10 truncate" title={"Status"}>
-            {"Status"}
-          </span>
-          <SortIcon field="status" sortConfig={sortConfig} />
-        </div>
-      </th>
-    </tr>
+
+        <th className="pl-2 rounded-r-3xl bg-transparent-sunset"
+          onClick={() => handleSort(`status`)}>
+          <div
+            className="flex items-center px-12 align-text-top cursor-pointer text-1xl ">
+            status
+            <SortIcon field={`status`} sortConfig={sortConfig} />
+          </div>
+        </th>
+      </tr>
+    </thead>
   );
 }
