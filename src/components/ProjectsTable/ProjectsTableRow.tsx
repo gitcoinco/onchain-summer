@@ -13,12 +13,11 @@ export function ProjectsTableRow({ index, project }: ProjectsTableRowProps) {
 
   return (
     <>
-      <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+      <tr className="text-lg"
         key={project.id}
       >
-        
-
-        <td scope="row" className="px-6 py-4 font-medium text-gray-900 dark:text-white">
+      {/* rounded-l-3xl bg-transparent-sunset */}
+        <td scope="row" className={clsx("px-6 py-4", {"rounded-l-3xl bg-transparent-sunset": oddRow})}>
           <div className="flex items-center">
             <img
               src={project.profile.profileImageUrl}
@@ -35,7 +34,7 @@ export function ProjectsTableRow({ index, project }: ProjectsTableRowProps) {
         </td>
 
         {getMetrics().map((metric, index) => (
-          <td key={index}>
+          <td key={index} className={clsx("px-12", {"bg-transparent-sunset": oddRow})}>
             <div className="">
               <span className="">
                 {project.metrics[metric] ? project.metrics[metric].toFixed(2).toString() : '0'}
@@ -44,7 +43,7 @@ export function ProjectsTableRow({ index, project }: ProjectsTableRowProps) {
           </td>
         ))}
 
-        <td className="rounded-r-2xl" colSpan={2}>
+        <td className={clsx("", {"rounded-r-3xl bg-transparent-sunset": oddRow})} colSpan={2}>
           <div className="flex items-center ">
             <Badge value={project.status} />
           </div>
