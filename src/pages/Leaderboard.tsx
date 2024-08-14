@@ -2,7 +2,7 @@ import loadingImg from "@/assets/loading.gif";
 import { ProjectsTable } from "@/components/ProjectsTable";
 import { ProjectsList } from "@/components/ProjectsList";
 import { useProjectsContext } from "@/contexts/projectsContext";
-import hero from "@/assets/thesunnys.svg"
+import hero from "@/assets/hero.svg"
 
 export function Leaderboard() {
   const { projects, isPending, isError } = useProjectsContext();
