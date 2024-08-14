@@ -15,8 +15,8 @@ export function NavbarLink({
     <Link
       to={target}
       onClick={onClick}
-      className={`block mt-4 md:mt-0 md:inline-block mr-4 font-normal text-lg/5 ${
-        currentPath === target ? "underline" : ""
+      className={`block mt-4 md:mt-0 md:inline-block mr-4 text-lg ${
+        currentPath === target ? "text-light-sunset" : "text-light-blue"
       }`}
     >
       {children}

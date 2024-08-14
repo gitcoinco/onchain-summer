@@ -8,7 +8,7 @@ export function Menu({ links }: MenuProps) {
   const { pathname } = useLocation();
 
   return (
-    <div className={"hidden lg:flex items-center w-full md:w-auto"}>
+    <div className='items-center justify-center hidden gap-6 lg:flex whitespace-nowrap'>
       {links.map(({ target, label }) => (
         <NavbarLink key={target} target={target} currentPath={pathname}>
           {label}

@@ -29,58 +29,44 @@ export function ProjectsTableHeadRow() {
   const { handleSort, sortConfig } = useProjectsContext();
 
   return (
-    
-    <tr className="h-[55px] bg-white-50">
-      <th
-        className="pl-4 rounded-l-xl"
-        colSpan={2}
-        onClick={() => handleSort("name")}
-      >
-        
-        <div className="flex items-center cursor-pointer">
-          <span
-            className="pr-2 text-2xl font-medium truncate"
-            title={"Project Name"}
-          >
+
+    <thead className="text-xl ">
+      
+      <tr >
+        <th scope="col" className="px-6 py-3 rounded-l-3xl bg-transparent-sunset" onClick={() => handleSort("name")}>
+          <div className="flex items-center">
             Project Name
-          </span>
-
-          <SortIcon field="name" sortConfig={sortConfig} />
-        </div>
-      </th>
-
-      {getMetrics().map((metric, index) => (
-        <th
-          key={index}
-          className="pl-2"
-          onClick={() => handleSort(`metrics.${metric}`)}>
-          <div
-            className="flex items-center px-12 align-text-top cursor-pointer text-1xl ">
-            {getDisplayName(metric)}
-            <SortIcon field={`metrics.${metric}`} sortConfig={sortConfig} />
+            <SortIcon field="name" sortConfig={sortConfig} />
           </div>
         </th>
-      ))}
+        {getMetrics().map((metric, index) => (
+          <th
+            key={index}
+            scope="col"
+            className="px-12 bg-transparent-sunset text-nowrap"
+            onClick={() => handleSort(`metrics.${metric}`)}>
+            <div
+              className="flex items-center">
+              {getDisplayName(metric)}
+              <SortIcon field={`metrics.${metric}`} sortConfig={sortConfig} />
+            </div>
+          </th>
+        ))}
+
+        <th className="pl-2 rounded-r-3xl bg-transparent-sunset"
+          onClick={() => handleSort(`status`)}>
+          <div
+            className="flex items-center px-12 align-text-top cursor-pointer text-1xl ">
+            status
+            <SortIcon field={`status`} sortConfig={sortConfig} />
+          </div>
+        </th>
+      </tr>
       
-      <th
-        className="pl-2 pr-4 rounded-r-xl"
-        colSpan={2}
-        onClick={() => handleSort("status")}
-      >
-        <div
-          className={clsx(
-            "flex items-center justify-end gap",
-            "w-full",
-            "cursor-pointer"
-          )}
-        >
-          <span className="font-medium truncate text-2xl/10" title={"Status"}>
-            {"Status"}
-          </span>
-          <SortIcon field="status" sortConfig={sortConfig} />
-        </div>
-      </th>
-    </tr>
+    </thead>
+
+
+ 
 
   );
 }

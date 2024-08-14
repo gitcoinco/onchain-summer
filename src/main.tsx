@@ -9,6 +9,12 @@ import { Layout } from "./layouts";
 
 import "./styles/index.css";
 import { ProjectsProvider } from "./contexts/projectsContext";
+import { Leaderboard } from "./pages/Leaderboard";
+import { Schedule } from "./pages/Schedule";
+import { Participate } from "./pages/Participate";
+import { About } from "./pages/About";
+import '@fontsource/inter';
+
 
 const router = createBrowserRouter([
   {
@@ -38,6 +44,38 @@ const router = createBrowserRouter([
       {
         path: "/rewards",
         element: <Rewards />,
+      },
+      {
+        path: "/leaderboard",
+        element: (
+          <ProjectsProvider>
+            <Leaderboard />
+          </ProjectsProvider>
+        ),
+      },
+      {
+        path: "/schedule",
+        element: (
+          <ProjectsProvider>
+            <Schedule />
+          </ProjectsProvider>
+        ),
+      },
+      {
+        path: "/participate",
+        element: (
+          <ProjectsProvider>
+            <Participate />
+          </ProjectsProvider>
+        ),
+      },
+      {
+        path: "/about",
+        element: (
+          <ProjectsProvider>
+            <About />
+          </ProjectsProvider>
+        ),
       },
     ],
   },
