@@ -17,8 +17,9 @@ export function ProjectsTableRow({ index, project }: ProjectsTableRowProps) {
         key={project.id}
       >
       {/* rounded-l-3xl bg-transparent-sunset */}
-        <td scope="row" className={clsx("px-6 py-4", {"rounded-l-3xl bg-transparent-sunset": oddRow})}>
+        <td scope="row" className={clsx("px-6 py-2 ", {"rounded-l-3xl bg-transparent-sunset": oddRow})}>
           <div className="flex items-center">
+          
             <img
               src={project.profile.profileImageUrl}
               alt={project.name}
@@ -44,7 +45,7 @@ export function ProjectsTableRow({ index, project }: ProjectsTableRowProps) {
         ))}
 
         <td className={clsx("", {"rounded-r-3xl bg-transparent-sunset": oddRow})} colSpan={2}>
-          <div className="flex items-center ">
+          <div className="flex items-center px-12 ">
             <Badge value={project.status} />
           </div>
         </td>

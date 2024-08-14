@@ -17,10 +17,10 @@ export function Leaderboard() {
         alt="Hero..."
         style={{ height: 450, margin: "0 auto" }}
       />
-      
+
       <h2 className="pt-12 pb-8 text-3xl text-white">Projects {`(${nApplications})`}</h2>
 
-      <div className="lg:px-4 lg:py-6 lg:rounded-3xl lg:bg-white-40">
+      <div className="px-4 py-6 rounded-3xl bg-white-40">
         {isPending && (
           <div className="text-center">
             <img
@@ -36,14 +36,9 @@ export function Leaderboard() {
         )}
 
         {!isPending && !isError && (
-          <>
-            <div className="hidden lg:block">
-              <ProjectsTable />
-            </div>
-            <div className="flex flex-col gap-2 lg:hidden">
-              <ProjectsList />
-            </div>
-          </>
+          <div className="">
+            <ProjectsTable />
+          </div>
         )}
       </div>
     </div>
