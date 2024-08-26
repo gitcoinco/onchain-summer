@@ -7,6 +7,9 @@ import {
 } from "./types";
 import { encodeInput } from "./utils";
 
+
+// TODO get approved project and it's metrics
+
 export const fetchApplications = async (): Promise<Project[]> => {
   const encodedInput = encodeInput({
     orderBy: "time",

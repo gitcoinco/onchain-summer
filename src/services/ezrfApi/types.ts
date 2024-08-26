@@ -18,6 +18,7 @@ export type Metrics = { [key: string]: number };
 
 export type ProjectWithMetrics = Project & {
   metrics: Metrics;
+  rank: number;
 };
 
 export type ProjectsApiResponse = {
