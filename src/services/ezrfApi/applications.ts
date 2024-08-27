@@ -7,6 +7,9 @@ import {
 } from "./types";
 import { encodeInput } from "./utils";
 
+
+// TODO get approved project and it's metrics
+
 export const fetchApplications = async (): Promise<Project[]> => {
   const encodedInput = encodeInput({
     orderBy: "time",
@@ -55,8 +58,9 @@ export const fetchMetrics = async (): Promise<ProjectWithMetrics[]> => {
   const data: MetricsApiResponse = await res.json();
   const metricsByProjectId = data.result.data.json;
 
-  return projects.map((project) => ({
+  return projects.map((project, index) => ({
     ...project,
     metrics: metricsByProjectId[project.id] || {},
+    rank: index
   }));
 };

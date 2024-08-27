@@ -12,19 +12,23 @@ export default {
       colors: {
         "white-40": "rgba(255, 255, 255, 0.4)",
         "white-50": "rgba(255, 255, 255, 0.5)",
+        "header-title": "#F7F7F7",
         "gray-light": "#dbdbdb",
         "orange-sunset": "#FF8744",
         "black": "#000000",
         "light-blue": "#A9BFFF",
         "light-sunset": "#D8BE7D",
-        "transparent-sunset": "#C28D6C",
-        "rockon":"#666666"
-        // "liggray-300":"#979998"
+        "transparent-blue": "#78B0C9",
+        "rockon":"#666666",
+        "sunnygold":"#F8E8C1"
+
         
         
       },
       fontFamily: {
         inter: ['Inter', ...defaultTheme.fontFamily.sans],
+        // sora: ['Sora', ...defaultTheme.fontFamily.sans],
+        sora : ['Sora', 'sans-serif'],
 
 
       }

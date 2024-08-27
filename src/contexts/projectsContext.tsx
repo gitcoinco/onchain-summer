@@ -1,7 +1,8 @@
 import { createContext, useContext, useState, useMemo, ReactNode } from "react";
-import { useApplicationsMetrics } from "@/hooks";
+// import { useApplicationsMetrics } from "@/hooks";
 import { ProjectWithMetrics } from "@/services/ezrfApi/types";
 import { sortProjects } from "./utils";
+import { useApplicationsMetrics } from "@/hooks";
 
 export interface SortConfig {
   key: string;
@@ -24,7 +25,102 @@ export const ProjectsProvider = ({ children }: { children: ReactNode }) => {
     direction: "ascending",
   });
 
+
+
   const { isError, isPending, data: projects } = useApplicationsMetrics();
+
+  // const isPending = false;
+  // const isError = false;
+
+  // const projects  = [
+
+  //   {
+  //     rank: 1,
+  //     id: "1",
+  //     name: "Project 1",
+  //     status: "Active",
+  //     metrics: {
+  //       totalApplications: 10,
+  //       totalRewards: 20,
+  //       totalEligibility: 30,
+  //     },
+  //     profile: {
+  //       name: "Project 1",
+  //       profileImageUrl: "https://via.placeholder.com/150",
+  //       bannerImageUrl: "https://via.placeholder.com/150",
+  //     },
+  //     metadata: {
+  //       name: "Project 1",
+  //       bio: "Project 1",
+  //       websiteUrl: "https://www.google.com",
+  //     },
+  //   },
+  //   {
+  //     rank: 2,
+  //     id: "2",
+  //     name: "Project 2",
+  //     status: "Inactive",
+  //     metrics: {
+  //       totalApplications: 20,
+  //       totalRewards: 30,
+  //       totalEligibility: 40,
+  //     },
+  //     profile: {
+  //       name: "Project 2",
+  //       profileImageUrl: "https://via.placeholder.com/150",
+  //       bannerImageUrl: "https://via.placeholder.com/150",
+  //     },
+  //     metadata: {
+  //       name: "Project 2",
+  //       bio: "Project 2",
+  //       websiteUrl: "https://www.google.com",
+  //     },
+  //   },
+  //   {
+  //     rank: 3,
+  //     id: "3",
+  //     name: "Project 3",
+  //     status: "Active",
+  //     metrics: {
+  //       totalApplications: 30,
+  //       totalRewards: 40,
+  //       totalEligibility: 50,
+  //     },
+  //     profile: {
+  //       name: "Project 3",
+  //       profileImageUrl: "https://via.placeholder.com/150",
+  //       bannerImageUrl: "https://via.placeholder.com/150",
+  //     },
+  //     metadata: {
+  //       name: "Project 3",
+  //       bio: "Project 3",
+  //       websiteUrl: "https://www.google.com",
+  //     },
+  //   },
+  //   {
+  //     rank: 4,
+  //     id: "4",
+  //     name: "Project 4",
+  //     status: "Inactive",
+  //     metrics: {
+  //       totalApplications: 40,
+  //       totalRewards: 50,
+  //       totalEligibility: 60,
+  //     },
+  //     profile: {
+  //       name: "Project 4",
+  //       profileImageUrl: "https://via.placeholder.com/150",
+  //       bannerImageUrl: "https://via.placeholder.com/150",
+  //     },
+  //     metadata: {
+  //       name: "Project 4",
+  //       bio: "Project 4",
+  //       websiteUrl: "https://www.google.com",
+  //     },
+  //   }
+   
+  // ]
+
 
   const sortedProjects = useMemo(
     () => sortProjects(projects, sortConfig),

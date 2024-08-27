@@ -11,6 +11,9 @@ importers:
       '@fontsource/inter':
         specifier: ^5.0.20
         version: 5.0.20
+      '@fontsource/sora':
+        specifier: ^5.0.19
+        version: 5.0.19
       '@tanstack/react-query':
         specifier: ^5.49.2
         version: 5.49.2(react@18.3.1)
@@ -237,6 +240,9 @@ packages:
 
   '@fontsource/inter@5.0.20':
     resolution: {integrity: sha512-rtw2F7xfM7rJmmnncXnR4ADr5wXsp4GyN1O1jmQJ1PMjAK+bm620/ZkQkeOYOkGoa09OksGinOeMA+Mkt6K9PQ==}
+
+  '@fontsource/sora@5.0.19':
+    resolution: {integrity: sha512-UonP14EH8X0WgKjTbOQsmQAL862O4wvi4i4+EDN/gUutMau6nOjrMutn8XiLyRm98cjUbijMXhJ4NcOI+MBFNw==}
 
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -1478,6 +1484,8 @@ snapshots:
   '@eslint/js@8.57.0': {}
 
   '@fontsource/inter@5.0.20': {}
+
+  '@fontsource/sora@5.0.19': {}
 
   '@humanwhocodes/config-array@0.11.14':
     dependencies:

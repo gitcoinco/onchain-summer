@@ -5,8 +5,9 @@ import { useProjectsContext } from "@/contexts/projectsContext";
 export function ProjectsTable() {
   const { projects } = useProjectsContext();
 
+
   return (
-    <div className="relative overflow-x-auto">
+    <div className="relative pt-12 overflow-x-auto">
       <table className="w-full text-xl text-black border-collapse">
         <ProjectsTableHeadRow />
         <tbody>

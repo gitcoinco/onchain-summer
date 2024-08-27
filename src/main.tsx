@@ -14,6 +14,7 @@ import { Schedule } from "./pages/Schedule";
 import { Participate } from "./pages/Participate";
 import { About } from "./pages/About";
 import '@fontsource/inter';
+import '@fontsource/sora';
 
 
 const router = createBrowserRouter([
