@@ -58,8 +58,9 @@ export const fetchMetrics = async (): Promise<ProjectWithMetrics[]> => {
   const data: MetricsApiResponse = await res.json();
   const metricsByProjectId = data.result.data.json;
 
-  return projects.map((project) => ({
+  return projects.map((project, index) => ({
     ...project,
     metrics: metricsByProjectId[project.id] || {},
+    rank: index
   }));
 };

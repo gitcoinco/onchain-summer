@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useMemo, ReactNode } from "react";
-import { useApplicationsMetrics } from "@/hooks";
+// import { useApplicationsMetrics } from "@/hooks";
 import { ProjectWithMetrics } from "@/services/ezrfApi/types";
 import { sortProjects } from "./utils";
 

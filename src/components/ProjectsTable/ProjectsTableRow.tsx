@@ -1,6 +1,6 @@
-import clsx from "clsx";
+// import clsx from "clsx";
 import { ProjectWithMetrics } from "@/services/ezrfApi/types";
-import { Badge } from "./Badge";
+// import { Badge } from "./Badge";
 import { getMetrics } from "@/services/metrics";
 
 interface ProjectsTableRowProps {
@@ -8,8 +8,8 @@ interface ProjectsTableRowProps {
   project: ProjectWithMetrics;
 }
 
-export function ProjectsTableRow({ index, project }: ProjectsTableRowProps) {
-  const oddRow = index % 2 !== 0;
+export function ProjectsTableRow({ project }: ProjectsTableRowProps) {
+  // const oddRow = index % 2 !== 0;
 
   return (
 

@@ -2,12 +2,12 @@ import loadingImg from "@/assets/loading.gif";
 import { ProjectsTable } from "@/components/ProjectsTable";
 import { useProjectsContext } from "@/contexts/projectsContext";
 import hero from "@/assets/awardhero.png"
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+// import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 export function Leaderboard() {
-  const { projects, isPending, isError } = useProjectsContext();
+  const { isPending, isError } = useProjectsContext();
 
-  const nApplications = projects?.length || 0;
+  // const nApplications = projects?.length || 0;
 
   return (
     <div className="w-full pt-24 mx-auto">
