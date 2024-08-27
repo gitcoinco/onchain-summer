@@ -19,7 +19,7 @@ export function Navbar() {
   return (
     <nav className="bg-transparent px-24 h-[64px] flex justify-between items-center pt-14">
       <div className="flex items-center justify-between w-full font-bold font-inter">
-        <Link to="/">
+        <Link to="https://www.thesunnyawards.fun">
           <img src={logo} alt="Logo" className="w-48 auto w- h-18" />
         </Link>
         <DropdownMenu links={links} />

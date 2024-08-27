@@ -36,6 +36,8 @@ export function Leaderboard() {
 
       {/* <h2 className="pt-12 pb-8 text-3xl text-white">Projects {`(${nApplications})`}</h2> */}
 
+      <div className="pt-24 pb-12 text-xl text-center text-white ">Come back soon to see data and metrics about your favorite projects</div>
+
       <div className="px-4 py-6 rounded-3xl">
         {isPending && (
           <div className="text-center">
