@@ -16,7 +16,7 @@ export const fetchApplications = async (): Promise<Project[]> => {
   });
 
   const res = await fetch(
-    `${EZRF_API_URL}projects.list?input=${encodedInput}`,
+    `${EZRF_API_URL}projects.listApproved?input=${encodedInput}`,
     {
       headers: {
         "content-type": "application/json",
