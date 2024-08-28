@@ -24,7 +24,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <ProjectsProvider>
+            <Leaderboard />
+          </ProjectsProvider>
+        ),
       },
       {
         path: "/eligibility",

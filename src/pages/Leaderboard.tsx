@@ -1,7 +1,7 @@
 import loadingImg from "@/assets/loading.gif";
 import { ProjectsTable } from "@/components/ProjectsTable";
 import { useProjectsContext } from "@/contexts/projectsContext";
-import hero from "@/assets/awardhero.png"
+import hero from "@/assets/leaderboardHero.svg"
 // import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 export function Leaderboard() {
@@ -36,7 +36,7 @@ export function Leaderboard() {
 
       {/* <h2 className="pt-12 pb-8 text-3xl text-white">Projects {`(${nApplications})`}</h2> */}
 
-      <div className="pt-24 pb-12 text-xl text-center text-white ">Come back soon to see data and metrics about your favorite projects</div>
+      <div className="pb-12 text-xl text-center text-white pt-36 font-sora ">Come back soon to see data and metrics about your favorite projects</div>
 
       <div className="px-4 py-6 rounded-3xl">
         {isPending && (
