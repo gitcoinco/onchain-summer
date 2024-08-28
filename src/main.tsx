@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { Applications, Apply, Eligibility, Home, Rewards } from "./pages";
+import { Applications, Apply, Eligibility, Rewards } from "./pages";
 import { Layout } from "./layouts";
 
 import "./styles/index.css";
@@ -24,7 +24,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <ProjectsProvider>
+            <Leaderboard />
+          </ProjectsProvider>
+        ),
       },
       {
         path: "/eligibility",
