@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchMetrics } from "@/services/ezrfApi";
-import { ProjectWithMetrics } from "@/services/ezrfApi/types";
+import { fetchApplications } from "@/services/ezrfApi";
+import { ProjectWithRank } from "@/services/ezrfApi/types";
 
 export function useApplicationsMetrics() {
-  return useQuery<ProjectWithMetrics[], Error>({
+  return useQuery<ProjectWithRank[], Error>({
     queryKey: ["metrics"],
-    queryFn: fetchMetrics,
+    queryFn: fetchApplications,
   });
 }
