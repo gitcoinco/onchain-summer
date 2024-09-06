@@ -19,15 +19,16 @@ export function ApplicationCard({ project }: ApplicationCardProps) {
       <div className="flex flex-col items-center gap-2 p-4 mt-2">
         <span className="font-bold">Metrics</span>
         <div className="flex flex-col flex-wrap justify-center w-full gap-2 sm:flex-row">
-
           {getMetrics().map((metric, index) => (
-
-            <MetricCard key={index} 
-              name={getDisplayName(metric)} 
-              value={metrics[metric] ? metrics[metric].toFixed(2).toString() : '0'} />
+            <MetricCard
+              key={index}
+              name={getDisplayName(metric)}
+              value={
+                metrics?.[metric] ? metrics[metric].toFixed(2).toString() : "0"
+              }
+            />
           ))}
         </div>
-
       </div>
     </div>
   );
@@ -45,8 +46,7 @@ function MetricCard({ name, value }: MetricCardProps) {
         "bg-white-50 rounded-xl w-full sm:w-40 py-2 px-6 sm:p-4",
         "text-center",
         "flex sm:flex-col gap-2 justify-between"
-      )}
-    >
+      )}>
       <span className="truncate" title={name}>
         {name}
       </span>

@@ -1,4 +1,4 @@
-export type Project = {
+export type ProjectWithMetrics = {
   id: string;
   name: string;
   status: string;
@@ -23,7 +23,7 @@ export type Project = {
       coverImageUrl: string;
     };
   };
-  metrics?: Record<string, Metrics>;
+  metrics?: Metrics;
 };
 
 type ContributionLink = {
@@ -44,14 +44,14 @@ type ProjectReferences = {
 
 export type Metrics = { [key: string]: number };
 
-export type ProjectWithRank = Project & {
+export type ProjectWithRank = ProjectWithMetrics & {
   rank: number;
 };
 
 export type ProjectsApiResponse = {
   result: {
     data: {
-      json: Project[];
+      json: ProjectWithMetrics[];
     };
   };
 };

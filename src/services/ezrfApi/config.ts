@@ -1,4 +1,4 @@
-const localUrl = "http://localhost:3000";
+// const localUrl = "http://localhost:3000";
 const productionUrl = "https://ezrf-impact.vercel.app";
 
 export const EZRF_API_URL =
@@ -9,10 +9,10 @@ type Round = {
   key: string;
 };
 
-const testRound: Round = {
-  id: "round-huss-3",
-  key: "b16ad95e191a16ecfb9a9ef6f9c3599fec7718ffd237d3fecef52a9390b1dd65",
-};
+// const testRound: Round = {
+//   id: "round-huss-3",
+//   key: "b16ad95e191a16ecfb9a9ef6f9c3599fec7718ffd237d3fecef52a9390b1dd65",
+// };
 
 const sunnyRound: Round = {
   id: "the-sunnys",

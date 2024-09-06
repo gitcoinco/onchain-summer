@@ -1,7 +1,7 @@
-import { ProjectWithMetrics } from "@/services/ezrfApi/types";
+import { ProjectWithRank } from "@/services/ezrfApi/types";
 
 export const sortProjects = (
-  projects: ProjectWithMetrics[] | undefined,
+  projects: ProjectWithRank[] | undefined,
   sortConfig: {
     key: string;
     direction: "ascending" | "descending";
@@ -16,11 +16,11 @@ export const sortProjects = (
 
       if (sortConfig.key.startsWith("metrics.")) {
         const metricKey = sortConfig.key.replace("metrics.", "");
-        aValue = a.metrics[metricKey];
-        bValue = b.metrics[metricKey];
+        aValue = a.metrics?.[metricKey];
+        bValue = b.metrics?.[metricKey];
       } else {
-        aValue = a[sortConfig.key as keyof ProjectWithMetrics];
-        bValue = b[sortConfig.key as keyof ProjectWithMetrics];
+        aValue = a[sortConfig.key as keyof ProjectWithRank];
+        bValue = b[sortConfig.key as keyof ProjectWithRank];
       }
 
       if (typeof aValue === "string" && typeof bValue === "string") {
@@ -36,8 +36,8 @@ export const sortProjects = (
       }
 
       if (typeof aValue === "number" || typeof bValue === "number") {
-        if (!aValue) return sortConfig.direction === "ascending"? 1 : -1;
-        if (!bValue) return sortConfig.direction === "ascending"? 1 : -1;
+        if (!aValue) return sortConfig.direction === "ascending" ? 1 : -1;
+        if (!bValue) return sortConfig.direction === "ascending" ? 1 : -1;
       }
     }
     return 0;
