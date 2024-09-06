@@ -1,4 +1,4 @@
-import { EZRF_API_URL, ROUND_ID } from "./config";
+import { EZRF_API_URL, ROUND } from "./config";
 import {
   MetricsApiResponse,
   Project,
@@ -17,13 +17,15 @@ export const fetchApplications = async (): Promise<Project[]> => {
     limit: 10,
     skip: 0,
   });
+  
 
   const res = await fetch(
     `${EZRF_API_URL}projects.listApproved?input=${encodedInput}`,
     {
       headers: {
         "content-type": "application/json",
-        "round-id": ROUND_ID,
+        "round-id": ROUND.id,
+        "x-api-key":ROUND.key
       },
     }
   );
@@ -39,6 +41,7 @@ export const fetchApplications = async (): Promise<Project[]> => {
 export const fetchMetrics = async (): Promise<ProjectWithMetrics[]> => {
   const projects = await fetchApplications();
   const projectIds = projects.map(({ id }) => id);
+  console.log(JSON.stringify(projectIds));
   const encodedInput = encodeInput({ projectIds });
 
   const res = await fetch(
@@ -46,7 +49,8 @@ export const fetchMetrics = async (): Promise<ProjectWithMetrics[]> => {
     {
       headers: {
         "content-type": "application/json",
-        "round-id": ROUND_ID,
+        "round-id": ROUND.id,
+        "x-api-key":ROUND.key
       },
     }
   );

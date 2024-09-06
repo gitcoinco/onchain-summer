@@ -23,6 +23,7 @@ export function ProjectsTableRow({ project }: ProjectsTableRowProps) {
       </td> */}
 
       <td scope="row" className={"px-6 py-2 md:sticky md:left-0 bg-black font-bold text-lg"}>
+
         <div className="flex items-center">
 
           <img
