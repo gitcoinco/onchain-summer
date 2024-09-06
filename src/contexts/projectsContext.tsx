@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useMemo, ReactNode } from "react";
 // import { useApplicationsMetrics } from "@/hooks";
-import { ProjectWithMetrics } from "@/services/ezrfApi/types";
+import { ProjectWithRank } from "@/services/ezrfApi/types";
 import { sortProjects } from "./utils";
 import { useApplicationsMetrics } from "@/hooks";
 
@@ -10,7 +10,7 @@ export interface SortConfig {
 }
 
 interface ProjectsContext {
-  projects: ProjectWithMetrics[];
+  projects: ProjectWithRank[];
   sortConfig: SortConfig;
   handleSort: (key: string) => void;
   isPending: boolean;
@@ -24,8 +24,6 @@ export const ProjectsProvider = ({ children }: { children: ReactNode }) => {
     key: "name",
     direction: "ascending",
   });
-
-
 
   const { isError, isPending, data: projects } = useApplicationsMetrics();
 
@@ -118,9 +116,8 @@ export const ProjectsProvider = ({ children }: { children: ReactNode }) => {
   //       websiteUrl: "https://www.google.com",
   //     },
   //   }
-   
-  // ]
 
+  // ]
 
   const sortedProjects = useMemo(
     () => sortProjects(projects, sortConfig),
@@ -143,8 +140,7 @@ export const ProjectsProvider = ({ children }: { children: ReactNode }) => {
         handleSort,
         isPending,
         isError,
-      }}
-    >
+      }}>
       {children}
     </ProjectsContext.Provider>
   );

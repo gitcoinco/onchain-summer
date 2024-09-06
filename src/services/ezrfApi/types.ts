@@ -1,8 +1,8 @@
-export type Project = {
+export type ProjectWithMetrics = {
   id: string;
   name: string;
   status: string;
-  profile: {
+  profile?: {
     name: string;
     profileImageUrl: string;
     bannerImageUrl: string;
@@ -11,30 +11,47 @@ export type Project = {
     name: string;
     bio: string;
     websiteUrl: string;
+    contributionLinks: ContributionLink[];
+    sunnyAwards: {
+      projectType: string;
+      category: string;
+      categoryDetails: string;
+      contracts: Contract[];
+      mintingWalletAddress: string;
+      projectReferences: ProjectReferences;
+      avatarUrl: string;
+      coverImageUrl: string;
+    };
   };
+  metrics?: Metrics;
+};
+
+type ContributionLink = {
+  description: string;
+  type: string;
+  url: string;
+};
+
+type Contract = {
+  chainId: number;
+  address: string;
+};
+
+type ProjectReferences = {
+  charmverseId: string;
+  agoraProjectRefUID: string;
 };
 
 export type Metrics = { [key: string]: number };
 
-export type ProjectWithMetrics = Project & {
-  metrics: Metrics;
+export type ProjectWithRank = ProjectWithMetrics & {
   rank: number;
 };
 
 export type ProjectsApiResponse = {
   result: {
     data: {
-      json: Project[];
-    };
-  };
-};
-
-export type MetricsApiResponse = {
-  result: {
-    data: {
-      json: {
-        [key: string]: Metrics;
-      };
+      json: ProjectWithMetrics[];
     };
   };
 };

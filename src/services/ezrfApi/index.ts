@@ -1,1 +1,1 @@
-export { fetchApplications, fetchMetrics } from "./applications";
+export { fetchApplications } from "./applications";
