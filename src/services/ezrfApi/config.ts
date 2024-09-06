@@ -1,8 +1,7 @@
 // const localUrl = "http://localhost:3000";
 const productionUrl = "https://ezrf-impact.vercel.app";
 
-export const EZRF_API_URL =
-  import.meta.env.VITE_API_URL || `${productionUrl}/api/trpc/`;
+export const EZRF_API_URL = `${productionUrl}/api/trpc/`;
 
 type Round = {
   id: string;
@@ -19,11 +18,6 @@ const sunnyRound: Round = {
   key: "bc2edd7987e6cba369add25aa7312875e06a8aa1c2dfe4b37fc05ab58db698e0",
 };
 
-const envRound = {
-  id: import.meta.env.VITE_ROUND_ID,
-  key: import.meta.env.VITE_API_KEY,
-};
-
 console.log({ EZRF_API_URL });
 
-export const ROUND = envRound.id && envRound.key ? envRound : sunnyRound;
+export const ROUND = sunnyRound;
