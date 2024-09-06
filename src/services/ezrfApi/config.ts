@@ -1,6 +1,8 @@
-export const EZRF_API_URL = "https://ezrf-impact.vercel.app/api/trpc/";
-// export const ROUND_ID = "the-sunnys"
-// export const API_KEY = "08670c35100892eb840d37c36ed009999b3eb98befcbc42f5fc462b3b8b7b472"
+const localUrl = "http://localhost:3000";
+const productionUrl = "https://ezrf-impact.vercel.app";
+
+export const EZRF_API_URL =
+  import.meta.env.VITE_API_URL || `${productionUrl}/api/trpc/`;
 
 type Round = {
   id: string;
@@ -17,4 +19,11 @@ const sunnyRound: Round = {
   key: "bc2edd7987e6cba369add25aa7312875e06a8aa1c2dfe4b37fc05ab58db698e0",
 };
 
-export const ROUND = sunnyRound;
+const envRound = {
+  id: import.meta.env.VITE_ROUND_ID,
+  key: import.meta.env.VITE_API_KEY,
+};
+
+console.log({ EZRF_API_URL });
+
+export const ROUND = envRound.id && envRound.key ? envRound : sunnyRound;
