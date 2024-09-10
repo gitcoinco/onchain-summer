@@ -28,7 +28,6 @@ export function useInfiniteApplications() {
     queryFn: ({ pageParam}) => fetchApplications(pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
-      console.log("WTF paging: " + lastPage[lastPage.length -1].nextPage);
       return lastPage[lastPage.length -1].nextPage},
     maxPages: 14,
   });

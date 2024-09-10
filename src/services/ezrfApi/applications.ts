@@ -10,10 +10,8 @@ export const fetchApplications = async (pageParam = 0) => {
   const encodedInput = encodeInput({
     orderBy: "time",
     sortOrder: "asc",
-    limit: 100,
-    // skip: (page - 1) * 100,
+    limit: 200,
     cursor: pageParam
-    // cursor: (100 * (page - 1)) + 1,
   });
 
   const res = await fetch(
