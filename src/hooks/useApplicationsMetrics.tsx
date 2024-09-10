@@ -1,22 +1,9 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { fetchApplications } from "@/services/ezrfApi";
-import { ProjectWithRank } from "@/services/ezrfApi/types";
 
 
 
-// const fetchProjects = async ({ pageParam = 0 }) => {
-//   const res = await fetch('/api/projects?cursor=' + pageParam)
-//   return res.json()
-// }
 
-
-// 14 pages of 100
-// export function useApplicationsMetrics(page : number)  {
-//   return useQuery<ProjectWithRank[], Error>({
-//     queryKey: ["metrics", page],
-//     queryFn: () => {return fetchApplications({pageParam: page});}
-//   });
-// }
 
 export function useInfiniteApplications() {
 

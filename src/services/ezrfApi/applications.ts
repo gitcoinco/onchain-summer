@@ -1,5 +1,5 @@
 import { EZRF_API_URL, ROUND } from "./config";
-import { ProjectsApiResponse, ProjectWithRank } from "./types";
+import { ProjectsApiResponse } from "./types";
 import { encodeInput } from "./utils";
 
 // TODO get approved project and it's metrics

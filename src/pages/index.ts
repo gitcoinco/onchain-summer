@@ -1,4 +1,3 @@
-export { Applications } from "./Applications";
 export { Apply } from "./Apply";
 export { Eligibility } from "./Eligibility";
 export { Home } from "./Home";

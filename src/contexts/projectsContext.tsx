@@ -2,7 +2,6 @@ import { createContext, useContext, useState, useMemo, ReactNode, useEffect } fr
 // import { useApplicationsMetrics } from "@/hooks";
 import { ProjectWithRank } from "@/services/ezrfApi/types";
 import { sortProjects } from "./utils";
-import { useApplicationsMetrics } from "@/hooks";
 import { useInfiniteApplications } from "@/hooks/useApplicationsMetrics";
 
 export interface SortConfig {
@@ -26,10 +25,7 @@ export const ProjectsProvider = ({ children }: { children: ReactNode }) => {
     direction: "ascending",
   });
 
-  const [curPage, setCurPage] = useState(1);
-  // const { isError, isPending, data: projects } = useApplicationsMetrics(2);
   const { data, hasNextPage, fetchNextPage, isPending, isError } = useInfiniteApplications();
-  // const { isError, isPending, data , fetchNextPage, hasNextPage  } = useInfiniteApplications();
 
   const [projects, setProjects] = useState<ProjectWithRank[]>([]);
 
