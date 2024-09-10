@@ -2,9 +2,6 @@ import { EZRF_API_URL, ROUND } from "./config";
 import { ProjectsApiResponse } from "./types";
 import { encodeInput } from "./utils";
 
-// TODO get approved project and it's metrics
-
-// export const fetchApplications = async({ pageParam = 0 }): Promise<ProjectWithRank[]> => {
 export const fetchApplications = async (pageParam = 0) => {
   console.log("fetching page: " + pageParam);
   const encodedInput = encodeInput({
@@ -31,8 +28,6 @@ export const fetchApplications = async (pageParam = 0) => {
 
   const data: ProjectsApiResponse = await res.json();
   const projects = data.result.data.json;
-
-  // return data.result.data.json
 
   return projects.map((project, index) => ({
     ...project,

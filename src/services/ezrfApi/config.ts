@@ -19,6 +19,4 @@ const sunnyRound: Round = {
   key: "bc2edd7987e6cba369add25aa7312875e06a8aa1c2dfe4b37fc05ab58db698e0",
 };
 
-// console.log({ EZRF_API_URL });
-
 export const ROUND = sunnyRound;

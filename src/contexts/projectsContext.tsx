@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useMemo, ReactNode, useEffect } from "react";
-// import { useApplicationsMetrics } from "@/hooks";
 import { ProjectWithRank } from "@/services/ezrfApi/types";
 import { sortProjects } from "./utils";
 import { useInfiniteApplications } from "@/hooks/useApplicationsMetrics";
@@ -26,40 +25,25 @@ export const ProjectsProvider = ({ children }: { children: ReactNode }) => {
   });
 
   const { data, hasNextPage, fetchNextPage, isPending, isError } = useInfiniteApplications();
-
   const [projects, setProjects] = useState<ProjectWithRank[]>([]);
 
-  
 
   useEffect(() => {
     if (projects.length > 1500) {
-      console.log("projects hit over 300 we're done: " + projects.length);
+      console.log("projects hit over 1500 we're done: " + projects.length);
       return;
     }
     if (!data || data?.pages?.length === 0) return;
-    // console.log("projectsz length: " + JSON.stringify(data));
-
-    // console.log
-    // setProjects(projects.ush).push(...data.pages[curPage]);
-
-    // const index = page - 2;
-    console.log('data pages index: ' + data.pages.length);
 
     setProjects(prevItems => [...prevItems, ...data.pages[data.pages.length - 1]]);
-    // setCurPage(curPage + 1);
 
     if (hasNextPage) {
-      console.log("would be fetching next page");
+      console.log("fetching next page");
       fetchNextPage();
     }else{
       console.log("no more pages to fetch")
     }
 
-    // console.log(projects.length)
-    return () => {
-      // if (curPage < 14) {
- 
-    }
   }
     , [data]);
 
