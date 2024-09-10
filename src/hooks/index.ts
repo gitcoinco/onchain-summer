@@ -1,1 +1,1 @@
-export { useApplicationsMetrics } from "./useApplicationsMetrics";
+export { useInfiniteApplications } from "./useApplicationsMetrics";
