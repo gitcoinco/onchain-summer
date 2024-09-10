@@ -24,6 +24,7 @@ export type ProjectWithMetrics = {
     };
   };
   metrics?: Metrics;
+  nextPage: number;
 };
 
 type ContributionLink = {
@@ -46,6 +47,7 @@ export type Metrics = { [key: string]: number };
 
 export type ProjectWithRank = ProjectWithMetrics & {
   rank: number;
+  nextPage: number;
 };
 
 export type ProjectsApiResponse = {

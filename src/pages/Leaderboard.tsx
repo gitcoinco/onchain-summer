@@ -55,7 +55,7 @@ export function Leaderboard() {
 
         {!isPending && !isError && (
           <div className="">
-            <ProjectsTable />
+            <ProjectsTable filter="creator" />
           </div>
         )} 
       </div>
