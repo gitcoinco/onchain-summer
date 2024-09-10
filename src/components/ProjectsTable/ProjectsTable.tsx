@@ -28,10 +28,10 @@ export function ProjectsTable(props: TableProps) {
     const approved = projects.filter((project) => project.status === "approved");
     // console.log("approved length: " + approved.length);
 
-    // const typed = approved.filter((project) => project.metadata.sunnyAwards.projectType === props.filter);
+    const typed = approved.filter((project) => project.metadata.sunnyAwards.projectType === props.filter);
     // console.log("typed length: " + typed.length);
 
-    setFiltered(approved);
+    setFiltered(typed);
 
 
 

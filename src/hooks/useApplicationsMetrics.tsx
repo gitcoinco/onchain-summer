@@ -29,7 +29,7 @@ export function useInfiniteApplications() {
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       return lastPage[lastPage.length -1].nextPage},
-    maxPages: 14,
+    maxPages: 7,
   });
 
   return query;
