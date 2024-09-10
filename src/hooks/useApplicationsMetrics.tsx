@@ -25,10 +25,11 @@ export function useInfiniteApplications() {
   const query = useInfiniteQuery({
 
     queryKey: ["metrics"],
-    queryFn: ({ pageParam}) => fetchApplications(pageParam),
+    queryFn: ({ pageParam }) => fetchApplications(pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
-      return lastPage[lastPage.length -1].nextPage},
+      return lastPage[lastPage.length - 1].nextPage
+    },
     maxPages: 7,
   });
 
