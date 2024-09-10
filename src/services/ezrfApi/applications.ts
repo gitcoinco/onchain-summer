@@ -7,8 +7,8 @@ export const fetchApplications = async (pageParam = 0) => {
   const encodedInput = encodeInput({
     orderBy: "time",
     sortOrder: "asc",
-    limit: 200,
-    cursor: pageParam
+    limit: 200, // TODO: remove in case of not using infinite query
+    cursor: pageParam,
   });
 
   const res = await fetch(
