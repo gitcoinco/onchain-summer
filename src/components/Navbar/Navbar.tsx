@@ -6,13 +6,8 @@ import { DropdownMenu } from "./DropdownMenu";
 import { Menu } from "./Menu";
 
 const links = [
-  // { target: "/applications", label: "applications" },
-  // { target: "/rewards", label: "rewards" },
-  // { target: "/eligibility", label: "faq" },
   { target: "https://www.thesunnyawards.fun", label: "About" },
-  // { target: "https://www.thesunnyawards.fun/#comp-ly6bm89e", label: "How to Participate" },
-  // { target: "/schedule", label: "Schedule" },
-  { target: "/leaderboard", label: "Leaderboard" },
+  { target: "/leaderboard", label: "Metrics" },
 ];
 
 export function Navbar() {
