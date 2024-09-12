@@ -3,16 +3,18 @@ import hero from "@/assets/herotitle.png";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { useState } from "react";
 import Details from "@/components/Details";
-import { ProjectWithMetrics } from "@/services/ezrfApi/types";
+import { ProjectWithRank } from "@/services/ezrfApi/types";
 
 export function Leaderboard() {
 
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<ProjectWithMetrics>();
+  const [selectedProject, setSelectedProject] = useState<ProjectWithRank>();
 
-  const handleViewerClick = (project: ProjectWithMetrics) => {
+  const handleViewerClick = (project: ProjectWithRank | undefined) => {
     setIsDetailsOpen(!isDetailsOpen);
-    setSelectedProject(project);
+    if (project) {
+      setSelectedProject(project);
+    }
   };
 
 
@@ -72,7 +74,7 @@ export function Leaderboard() {
         <>
           <Details
             onClick={() => {
-              handleViewerClick();
+              handleViewerClick(undefined);
             }}
             project={selectedProject}
           // image={viewed}

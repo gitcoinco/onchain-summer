@@ -2,11 +2,11 @@ import { ProjectsTableRow } from "./ProjectsTableRow";
 import { ProjectsTableHeadRow } from "./ProjectsTableHeadRow";
 import { useProjectsContext } from "@/contexts/projectsContext";
 import loadingImg from "@/assets/loading.gif";
-import { ProjectWithMetrics } from "@/services/ezrfApi/types";
+import { ProjectWithRank } from "@/services/ezrfApi/types";
 
 type TableProps = {
   filter: string;
-  onRowClick: (project: ProjectWithMetrics) => void;
+  onRowClick: (project: ProjectWithRank) => void;
 };
 
 export function ProjectsTable(props: TableProps) {

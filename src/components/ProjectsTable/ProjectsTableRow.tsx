@@ -1,12 +1,12 @@
 // import clsx from "clsx";
-import { ProjectWithMetrics, ProjectWithRank } from "@/services/ezrfApi/types";
+import { ProjectWithRank } from "@/services/ezrfApi/types";
 // import { Badge } from "./Badge";
 import { getMetrics, getRound } from "@/services/metrics";
 
 interface ProjectsTableRowProps {
   index: number;
   project: ProjectWithRank;
-  onRowClick: (project: ProjectWithMetrics) => void;
+  onRowClick: (project: ProjectWithRank) => void;
 }
 
 export function ProjectsTableRow({ project, onRowClick }: ProjectsTableRowProps) {
