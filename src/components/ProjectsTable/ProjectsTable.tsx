@@ -2,9 +2,11 @@ import { ProjectsTableRow } from "./ProjectsTableRow";
 import { ProjectsTableHeadRow } from "./ProjectsTableHeadRow";
 import { useProjectsContext } from "@/contexts/projectsContext";
 import loadingImg from "@/assets/loading.gif";
+import { ProjectWithMetrics } from "@/services/ezrfApi/types";
 
 type TableProps = {
   filter: string;
+  onRowClick: (project: ProjectWithMetrics) => void;
 };
 
 export function ProjectsTable(props: TableProps) {
@@ -12,7 +14,7 @@ export function ProjectsTable(props: TableProps) {
 
   if (isPending) {
     return (
-      <div className="text-center">
+      <div className="py-12 text-center">
         <img
           src={loadingImg}
           alt="Loading..."
@@ -38,6 +40,7 @@ export function ProjectsTable(props: TableProps) {
             )
             .map((project, index) => (
               <ProjectsTableRow
+                onRowClick={props.onRowClick}
                 key={project.id}
                 index={index}
                 project={project}

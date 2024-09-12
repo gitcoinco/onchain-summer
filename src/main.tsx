@@ -30,50 +30,8 @@ const router = createBrowserRouter([
           </ProjectsProvider>
         ),
       },
-      {
-        path: "/eligibility",
-        element: <Eligibility />,
-      },
-      {
-        path: "/apply",
-        element: <Apply />,
-      },
-      {
-        path: "/rewards",
-        element: <Rewards />,
-      },
-      {
-        path: "/leaderboard",
-        element: (
-          <ProjectsProvider>
-            <Leaderboard />
-          </ProjectsProvider>
-        ),
-      },
-      {
-        path: "/schedule",
-        element: (
-          <ProjectsProvider>
-            <Schedule />
-          </ProjectsProvider>
-        ),
-      },
-      {
-        path: "/participate",
-        element: (
-          <ProjectsProvider>
-            <Participate />
-          </ProjectsProvider>
-        ),
-      },
-      {
-        path: "/about",
-        element: (
-          <ProjectsProvider>
-            <About />
-          </ProjectsProvider>
-        ),
-      },
+
+      
     ],
   },
 ]);
