@@ -1,7 +1,8 @@
 // import clsx from "clsx";
-import { ProjectWithRank } from "@/services/ezrfApi/types";
+import Image from "next/image";
+import { ProjectWithRank } from "../../services/ezrfApi/types";
 // import { Badge } from "./Badge";
-import { getMetrics, getRound } from "@/services/metrics";
+import { getMetrics, getRound } from "../../services/metrics";
 
 interface ProjectsTableRowProps {
   index: number;
@@ -13,19 +14,21 @@ export function ProjectsTableRow({ project, onRowClick }: ProjectsTableRowProps)
   // const oddRow = index % 2 !== 0;
 
   return (
-    <tr className="text-header-title" key={project.id} onClick={() => {onRowClick(project)}} >
+    <tr className="text-header-title" key={project.id} onClick={() => { onRowClick(project) }} >
       <td
         scope="row"
         className={"px-6 py-2 md:sticky md:left-0 bg-black font-bold text-lg truncate "}
-        >
+      >
         <div className="flex items-center">
-          <img
+          <Image
             src={project.metadata?.sunnyAwards?.avatarUrl}
             alt={project.name}
-            className="mr-2 border border-black rounded-full size-6 shrink-0"
+            width={24}
+            height={24}
+            className="mr-2 border border-black rounded-full shrink-0"
           />
           <span
-            className="text-xs font-normal truncate max-w-32"
+            className="text-sm font-normal truncate max-w-32"
             title={project.name}>
             {project.name}
           </span>

@@ -1,7 +1,9 @@
+"use client"
+
 import { createContext, useContext, useState, useMemo, ReactNode } from "react";
-import { ProjectWithRank } from "@/services/ezrfApi/types";
+import { ProjectWithRank } from "../services/ezrfApi/types";
 import { sortProjects } from "./utils";
-import { useApplications } from "@/hooks";
+import { useApplications } from "../hooks/useApplications";
 
 export interface SortConfig {
   key: string;

@@ -1,8 +1,9 @@
-import sortIcon from "@/assets/sortIcon.svg";
-import sortIconAsc from "@/assets/sortIconAsc.svg";
-import sortIconDesc from "@/assets/sortIconDesc.svg";
-import { SortConfig, useProjectsContext } from "@/contexts/projectsContext";
-import { getDisplayName, getMetrics } from "@/services/metrics";
+import sortIcon from "../../images/sortIcon.svg";
+import sortIconAsc from "../../images/sortIconAsc.svg";
+import sortIconDesc from "../../images/sortIconDesc.svg";
+import { SortConfig, useProjectsContext } from "../../contexts/projectsContext";
+import { getDisplayName, getMetrics } from "../../services/metrics";
+import Image from "next/image";
 
 const SortIcon = ({
   field,
@@ -12,10 +13,10 @@ const SortIcon = ({
   sortConfig: SortConfig;
 }) => {
   if (field !== sortConfig.key) {
-    return <img src={sortIcon} alt="Sort Icon" className="ml-1 size-3" />;
+    return <Image src={sortIcon} alt="Sort Icon" className="ml-1 size-3" />;
   } else {
     return (
-      <img
+      <Image
         src={sortConfig.direction === "ascending" ? sortIconAsc : sortIconDesc}
         alt="Sort Icon"
         className="ml-1 size-3"

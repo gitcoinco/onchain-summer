@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchApplications } from "@/services/ezrfApi";
+import { fetchApplications } from "../services/ezrfApi";
 
 export function useApplications() {
   const query = useQuery({

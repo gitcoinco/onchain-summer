@@ -1,8 +1,9 @@
 import { ProjectsTableRow } from "./ProjectsTableRow";
 import { ProjectsTableHeadRow } from "./ProjectsTableHeadRow";
-import { useProjectsContext } from "@/contexts/projectsContext";
-import loadingImg from "@/assets/loading.gif";
-import { ProjectWithRank } from "@/services/ezrfApi/types";
+import { useProjectsContext } from "../../contexts/projectsContext";
+import loadingImg from "../../images/loading.gif";
+import { ProjectWithRank } from "../../services/ezrfApi/types";
+import Image from "next/image";
 
 type TableProps = {
   filter: string;
@@ -15,10 +16,10 @@ export function ProjectsTable(props: TableProps) {
   if (isPending) {
     return (
       <div className="py-12 text-center">
-        <img
+        <Image
           src={loadingImg}
           alt="Loading..."
-          style={{ height: 20, margin: "0 auto" }}
+          className="w-1/6 mx-auto"
         />
       </div>
     );

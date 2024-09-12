@@ -2,26 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "Inter-Regular";
-  src: url("/Inter-Regular.ttf") format("truetype");
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
 }
 
-html, body {
-  height: 100%;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
 }
 
 body {
-  font-family: "Inter-Regular", sans-serif;
-  @apply text-black;
-  
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.truncate {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
+
+
 
 .react-tabs {
   -webkit-tap-highlight-color: transparent;
