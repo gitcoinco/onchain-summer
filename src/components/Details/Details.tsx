@@ -13,8 +13,14 @@ export default function Details({ onClick, project }: DetailsProps) {
         className="fixed inset-0 bg-black opacity-80 navbar-backdrop"
         onClick={onClick}
       ></div>
-      <DetailCard project={project} showClose={true}  onClick={onClick}/>
-   
+      <div className="w-screen px-4 py-4 -translate-x-1/2 -translate-y-1/2 bg-black border-2 border-white rounded-md sm:w-auto md:py-12 md:px-12">
+
+        <DetailCard
+          project={project}
+          showClose={true}
+          onClick={onClick} />
+      </div>
+
     </div>
   );
 }
