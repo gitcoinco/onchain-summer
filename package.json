@@ -9,26 +9,28 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.11",
     "@fontsource/inter": "^5.0.20",
     "@fontsource/sora": "^5.0.19",
     "@tanstack/react-query": "^5.49.2",
     "autoprefixer": "^10.4.19",
     "clsx": "^2.1.1",
+    "next": "14.2.11",
     "postcss": "^8.4.38",
-    "react-tabs": "^6.0.2"
+    "react": "^18",
+    "react-dom": "^18",
+    "react-tabs": "^6.0.2",
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@tanstack/eslint-plugin-query": "^5.50.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.11",
-    "@tanstack/eslint-plugin-query": "^5.50.0"
+    "eslint-plugin-react-refresh": "^0.4.11",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
