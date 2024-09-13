@@ -28,7 +28,7 @@ export function ProjectsTableRow({ project, onRowClick }: ProjectsTableRowProps)
             className="mr-2 border border-black rounded-full shrink-0"
           />
           <span
-            className="text-sm font-normal truncate max-w-32"
+            className="text-base font-normal truncate max-w-32"
             title={project.name}>
             {project.name}
           </span>
@@ -36,7 +36,7 @@ export function ProjectsTableRow({ project, onRowClick }: ProjectsTableRowProps)
       </td>
 
       {getMetrics().map((metric, index) => (
-        <td key={index} className={"px-12 text-sm"}>
+        <td key={index} className={"px-12 text-base"}>
           <div className="">
             <span className="">
               {project.metrics?.[metric]

@@ -35,7 +35,7 @@ export function Leaderboard() {
       />
 
       <div className="py-32 lg:py-52 ">
-        <div className="absolute left-0 w-2/5 top-72 md:top-56">
+        <div className="absolute left-0 w-4/5 top-36 md:top-56 md:w-2/5">
           <Image
             src={hero}
             alt="Hero..."
