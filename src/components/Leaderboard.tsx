@@ -4,7 +4,7 @@
 import hero from "../images/herotitle.png";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { useState } from "react";
-import Details from "./Details";
+import Details from "./Details/Details";
 import { ProjectsTable } from "./ProjectsTable/ProjectsTable";
 import Image from "next/image";
 import { ProjectWithRank } from "@/services/ezrfApi/types";

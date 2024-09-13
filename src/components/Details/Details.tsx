@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { ProjectWithRank } from "../services/ezrfApi/types";
-import { getDisplayName, getMetrics, getRound } from "../services/metrics";
+import { ProjectWithRank } from "../../services/ezrfApi/types";
+import { getDisplayName, getMetrics, getRound } from "../../services/metrics";
+import DetailCard from "./DetailCard";
 
 type DetailsProps = {
   onClick: () => void;
@@ -14,7 +15,8 @@ export default function Details({ onClick, project }: DetailsProps) {
         className="fixed inset-0 bg-black opacity-80 navbar-backdrop"
         onClick={onClick}
       ></div>
-      <div className="w-screen px-4 py-4 -translate-x-1/2 -translate-y-1/2 bg-black border-2 border-white rounded-md sm:w-auto md:py-12 md:px-12">
+      <DetailCard project={project} showClose={true}  onClick={onClick}/>
+      {/* <div className="w-screen px-4 py-4 -translate-x-1/2 -translate-y-1/2 bg-black border-2 border-white rounded-md sm:w-auto md:py-12 md:px-12">
         <div className="items-center justify-center pt-4 ">
           {project && project?.metadata?.sunnyAwards?.avatarUrl ? (
             <Image
@@ -54,7 +56,7 @@ export default function Details({ onClick, project }: DetailsProps) {
           ))}
 
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

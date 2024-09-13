@@ -14,7 +14,7 @@ export function ProjectsTableRow({ project, onRowClick }: ProjectsTableRowProps)
   // const oddRow = index % 2 !== 0;
 
   return (
-    <tr className="text-header-title" key={project.id} onClick={() => { onRowClick(project) }} >
+    <tr className="cursor-pointer text-header-title" key={project.id} onClick={() => { onRowClick(project) }} >
       <td
         scope="row"
         className={"px-6 py-2 md:sticky md:left-0 bg-black font-bold text-lg truncate "}
