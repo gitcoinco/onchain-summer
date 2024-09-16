@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ProjectWithRank } from "../../services/ezrfApi/types";
-import { getMetrics, getRound } from "../../services/metrics";
+import { getMetrics } from "../../services/metrics";
 
 interface ProjectsTableRowProps {
   index: number;
