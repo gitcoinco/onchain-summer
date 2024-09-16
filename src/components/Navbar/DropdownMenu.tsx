@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ButtonBurger } from "./ButtonBurger";
 import { NavbarLink } from "./NavbarLink";
-import { useLocation } from "react-router-dom";
 import clsx from "clsx";
 
 interface DropdownMenuProps {
@@ -11,7 +10,6 @@ interface DropdownMenuProps {
 // Needs to have a listener to close the menu when the window get's resized to md
 
 export function DropdownMenu({ links }: DropdownMenuProps) {
-  const { pathname } = useLocation();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -29,8 +27,8 @@ export function DropdownMenu({ links }: DropdownMenuProps) {
       {isOpen && (
         <div
           className={clsx(
-            "lg:hidden",
-            "absolute top-12 right-0",
+            "lg:hidden z-50",
+            "absolute top-20 right-0",
             "bg-transparent shadow-lg rounded-lg p-4",
             "flex flex-col gap-2 items-center"
           )}
@@ -40,7 +38,7 @@ export function DropdownMenu({ links }: DropdownMenuProps) {
               key={target}
               target={target}
               onClick={() => setIsOpen(false)}
-              currentPath={pathname}
+              currentPath={"/"}
             >
               {label}
             </NavbarLink>

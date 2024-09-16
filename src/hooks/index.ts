@@ -1,1 +1,0 @@
-export { useApplications } from "./useApplications";

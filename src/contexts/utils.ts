@@ -11,7 +11,9 @@ export const sortProjects = (
 
   return [...projects].sort((a, b) => {
     if (sortConfig.key) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let aValue: any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let bValue: any;
 
       if (sortConfig.key.startsWith("metrics.")) {

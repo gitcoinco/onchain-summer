@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchApplications } from "@/services/ezrfApi";
+import { fetchApplications } from "../services/ezrfApi";
 
 export function useApplications() {
   const query = useQuery({
@@ -9,3 +9,19 @@ export function useApplications() {
 
   return query;
 }
+
+
+
+// export function useApplications() {
+//   const query = useInfiniteQuery({
+//     queryKey: ["metrics"],
+//     queryFn: ({ pageParam }: { pageParam: number }) => fetchApplications(pageParam),
+//     initialPageParam: 1,
+//     getNextPageParam: (lastPage: ProjectWithMetrics[]) => {
+//       return lastPage[lastPage.length - 1].nextPage
+//     },
+//     maxPages: 7,
+//   });
+
+//   return query;
+// }

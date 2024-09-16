@@ -1,14 +1,23 @@
-import { ProjectsTable } from "@/components/ProjectsTable";
-import hero from "@/assets/herotitle.png";
+"use client"
+
+import hero from "../images/herotitle.png";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { useState } from "react";
-import Details from "@/components/Details";
+import Details from "./Details/Details";
+import { ProjectsTable } from "./ProjectsTable/ProjectsTable";
+import Image from "next/image";
 import { ProjectWithRank } from "@/services/ezrfApi/types";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useProjectsContext } from "@/contexts/projectsContext";
+
 
 export function Leaderboard() {
 
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectWithRank>();
+
+  const { projects, isPending, isError } = useProjectsContext();
 
   const handleViewerClick = (project: ProjectWithRank | undefined) => {
     setIsDetailsOpen(!isDetailsOpen);
@@ -17,29 +26,26 @@ export function Leaderboard() {
     }
   };
 
-
-
   return (
     <div className="w-full pt-24 mx-auto ">
 
       <img
         src="/heroclouds.png"
-        className="fixed inset-0 z-0 pt-14"
-        alt="night sky"
+        alt="clouds"
+        className="fixed inset-0 object-cover w-full h-full pt-14 "
+
         style={{ width: "100%", margin: "0 auto" }}
       />
 
       <div className="py-32 lg:py-52 ">
-        <div className="absolute left-0 top-72 md:top-56">
-          <img
+        <div className="absolute left-0 w-4/5 top-36 md:top-56 md:w-2/5">
+          <Image
             src={hero}
             alt="Hero..."
             style={{ width: "80%", margin: "0 auto" }}
           />
         </div>
       </div>
-
-
 
       <div className="sticky z-10 bg-black rounded-md">
         <div className="px-6 lg:px-8 ">
@@ -52,17 +58,26 @@ export function Leaderboard() {
             <TabPanel>
               <ProjectsTable
                 filter="app"
-                onRowClick={handleViewerClick} />
+                onRowClick={handleViewerClick}
+                projects={projects}
+                isPending={isPending}
+                isError={isError} />
             </TabPanel>
             <TabPanel>
               <ProjectsTable
                 filter="creator"
-                onRowClick={handleViewerClick} />
+                onRowClick={handleViewerClick} 
+                projects={projects}
+                isPending={isPending}
+                isError={isError} />
             </TabPanel>
             <TabPanel>
               <ProjectsTable
                 filter="other"
-                onRowClick={handleViewerClick} />
+                onRowClick={handleViewerClick} 
+                projects={projects}
+                isPending={isPending}
+                isError={isError} />
             </TabPanel>
           </Tabs>
         </div>
@@ -83,6 +98,8 @@ export function Leaderboard() {
       ) : (
         <></>
       )}
+      <ToastContainer />
+
     </div>
   );
 }
