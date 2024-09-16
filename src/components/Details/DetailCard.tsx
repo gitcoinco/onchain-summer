@@ -44,8 +44,6 @@ export default function DetailCard({ project, showClose, onClick }: DetailCardPr
 
 
   return (
-
-    // <div className="w-screen px-4 py-4 -translate-x-1/2 -translate-y-1/2 bg-black border-2 border-white rounded-md sm:w-auto md:py-12 md:px-12">
     <div>
       {showClose ? (
         <div className="absolute top-0 flex cursor-pointer right-2">
@@ -60,7 +58,6 @@ export default function DetailCard({ project, showClose, onClick }: DetailCardPr
       ) : null
 
       }
-
 
       <div className="grid grid-cols-3 pt-8 pb-4 border-b-2 border-white">
         <div className="mx-auto ">
@@ -79,49 +76,22 @@ export default function DetailCard({ project, showClose, onClick }: DetailCardPr
 
         <div
           className="col-span-2 text-2xl font-bold text-left text-white ">
-
           {project?.name}
-
-
-
           <div className="grid grid-cols-2">
-
             <Metric project={project} metric={getMetrics()[0]} />
             <Metric project={project} metric={getMetrics()[1]} />
-
           </div>
         </div>
       </div>
-
-
-
+      
       <div className="grid grid-cols-2 gap-4 pt-6 text-white">
         {getMetrics().map((metric, index) => (
           index > 2 ? <Metric project={project} metric={metric} key={index} /> : <></>
-
-          // <Metric project={project} metric={metric} key={index} />
-
-          // <div className="py-4 text-center" key={index}>
-          //   <div className="text-white-50">
-          //     {getDisplayName(metric)}
-          //   </div>
-
-          //   <div className="text-xl">
-          //     {project?.metrics?.[metric]
-          //       ? project?.metrics[metric].toFixed(getRound(metric)).toString()
-          //       : "0"}
-          //   </div>
-
-          // </div>
-
-
         ))}
-
       </div>
       <Image src={logo} alt="Logo" width={100} className="absolute right-1 bottom-1" />
 
 
     </div>
-    // </div>
   );
 }

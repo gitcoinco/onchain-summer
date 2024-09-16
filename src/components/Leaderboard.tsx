@@ -1,6 +1,5 @@
 "use client"
 
-// import { ProjectsTable } from "@/components/ProjectsTable";
 import hero from "../images/herotitle.png";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { useState } from "react";
@@ -47,8 +46,6 @@ export function Leaderboard() {
           />
         </div>
       </div>
-
-
 
       <div className="sticky z-10 bg-black rounded-md">
         <div className="px-6 lg:px-8 ">

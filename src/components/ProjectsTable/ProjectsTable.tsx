@@ -1,6 +1,5 @@
 import { ProjectsTableRow } from "./ProjectsTableRow";
 import { ProjectsTableHeadRow } from "./ProjectsTableHeadRow";
-import { useProjectsContext } from "../../contexts/projectsContext";
 import loadingImg from "../../images/loading.gif";
 import { ProjectWithRank } from "../../services/ezrfApi/types";
 import Image from "next/image";

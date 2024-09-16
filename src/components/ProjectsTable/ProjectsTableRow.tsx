@@ -1,7 +1,5 @@
-// import clsx from "clsx";
 import Image from "next/image";
 import { ProjectWithRank } from "../../services/ezrfApi/types";
-// import { Badge } from "./Badge";
 import { getMetrics, getRound } from "../../services/metrics";
 
 interface ProjectsTableRowProps {
@@ -11,7 +9,6 @@ interface ProjectsTableRowProps {
 }
 
 export function ProjectsTableRow({ project, onRowClick }: ProjectsTableRowProps) {
-  // const oddRow = index % 2 !== 0;
 
   return (
     <tr className="cursor-pointer text-header-title" key={project.id} onClick={() => { onRowClick(project) }} >
@@ -40,7 +37,7 @@ export function ProjectsTableRow({ project, onRowClick }: ProjectsTableRowProps)
           <div className="">
             <span className="">
               {project.metrics?.[metric]
-                ? project.metrics[metric].toFixed(getRound(metric)).toString()
+                ? project.metrics[metric].toLocaleString('en-US', {maximumFractionDigits: 2})
                 : "0"}
             </span>
           </div>
