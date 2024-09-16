@@ -28,7 +28,7 @@ export function DropdownMenu({ links }: DropdownMenuProps) {
         <div
           className={clsx(
             "lg:hidden z-50",
-            "absolute top-12 right-0",
+            "absolute top-20 right-0",
             "bg-transparent shadow-lg rounded-lg p-4",
             "flex flex-col gap-2 items-center"
           )}

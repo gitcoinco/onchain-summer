@@ -4,6 +4,9 @@ const productionUrl = "https://ezrf-impact.vercel.app";
 
 export const EZRF_API_URL = `${productionUrl}/api/trpc/`;
 
+// export const SHARE_URL = "https://metrics.thesunnyawards.fun/";
+export const SHARE_URL = "http://localhost:3000/";
+
 type Round = {
   id: string;
   key: string;

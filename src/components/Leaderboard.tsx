@@ -8,7 +8,8 @@ import Details from "./Details/Details";
 import { ProjectsTable } from "./ProjectsTable/ProjectsTable";
 import Image from "next/image";
 import { ProjectWithRank } from "@/services/ezrfApi/types";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export function Leaderboard() {
@@ -88,6 +89,8 @@ export function Leaderboard() {
       ) : (
         <></>
       )}
+      <ToastContainer />
+
     </div>
   );
 }
