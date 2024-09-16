@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ProjectWithRank } from "../../services/ezrfApi/types";
-import { getDisplayName, getMetrics, getRound } from "../../services/metrics";
+import { getDisplayName, getMetrics } from "../../services/metrics";
 import { TfiClose, TfiShare } from "react-icons/tfi";
 import { SHARE_URL } from "@/services/ezrfApi/config";
 import { toast } from "react-toastify";
