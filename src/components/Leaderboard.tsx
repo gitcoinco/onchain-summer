@@ -10,12 +10,15 @@ import Image from "next/image";
 import { ProjectWithRank } from "@/services/ezrfApi/types";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useProjectsContext } from "@/contexts/projectsContext";
 
 
 export function Leaderboard() {
 
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectWithRank>();
+
+  const { projects, isPending, isError } = useProjectsContext();
 
   const handleViewerClick = (project: ProjectWithRank | undefined) => {
     setIsDetailsOpen(!isDetailsOpen);
@@ -58,17 +61,26 @@ export function Leaderboard() {
             <TabPanel>
               <ProjectsTable
                 filter="app"
-                onRowClick={handleViewerClick} />
+                onRowClick={handleViewerClick}
+                projects={projects}
+                isPending={isPending}
+                isError={isError} />
             </TabPanel>
             <TabPanel>
               <ProjectsTable
                 filter="creator"
-                onRowClick={handleViewerClick} />
+                onRowClick={handleViewerClick} 
+                projects={projects}
+                isPending={isPending}
+                isError={isError} />
             </TabPanel>
             <TabPanel>
               <ProjectsTable
                 filter="other"
-                onRowClick={handleViewerClick} />
+                onRowClick={handleViewerClick} 
+                projects={projects}
+                isPending={isPending}
+                isError={isError} />
             </TabPanel>
           </Tabs>
         </div>

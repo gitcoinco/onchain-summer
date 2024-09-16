@@ -8,12 +8,14 @@ import Image from "next/image";
 type TableProps = {
   filter: string;
   onRowClick: (project: ProjectWithRank) => void;
+  projects: ProjectWithRank[];
+  isPending: boolean;
+  isError: boolean;
 };
 
 export function ProjectsTable(props: TableProps) {
-  const { projects, isPending, isError } = useProjectsContext();
 
-  if (isPending) {
+  if (props.isPending) {
     return (
       <div className="py-12 text-center">
         <Image
@@ -25,7 +27,7 @@ export function ProjectsTable(props: TableProps) {
     );
   }
 
-  if (isError) {
+  if (props.isError) {
     return <div className="text-center">Something went wrong</div>;
   }
 
@@ -34,7 +36,7 @@ export function ProjectsTable(props: TableProps) {
       <table className="w-full text-xl text-black border-collapse">
         <ProjectsTableHeadRow />
         <tbody>
-          {projects
+          {props.projects
             .filter(
               project =>
                 project.metadata.sunnyAwards.projectType === props.filter
