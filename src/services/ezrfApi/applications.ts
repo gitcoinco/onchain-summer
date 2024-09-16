@@ -29,7 +29,10 @@ export const fetchApplications = async (pageParam = 0) => {
   const data: ProjectsApiResponse = await res.json();
   const projects = data.result.data.json;
 
-  return projects.map((project, index) => ({
+  //filter out projects where metrics is null
+  let metricsExist =  projects.filter((project) => project.metrics !== null);
+
+  return metricsExist.map((project, index) => ({
     ...project,
     rank: index,
   }));
