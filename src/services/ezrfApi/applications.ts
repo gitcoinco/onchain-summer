@@ -30,7 +30,7 @@ export const fetchApplications = async (pageParam = 0) => {
   const projects = data.result.data.json;
 
   //filter out projects where metrics is null
-  let metricsExist =  projects.filter((project) => project.metrics !== null);
+  const metricsExist =  projects.filter((project) => project.metrics !== null);
 
   return metricsExist.map((project, index) => ({
     ...project,
