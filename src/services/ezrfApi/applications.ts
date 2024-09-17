@@ -30,10 +30,10 @@ export const fetchApplications = async (pageParam = 0, searchId : string | undef
   const data: ProjectsApiResponse = await res.json();
   const projects = data.result.data.json;
 
-  //filter out projects where metrics is null
-  const metricsExist =  projects.filter((project) => project.metrics !== null);
+  //TODO filter out projects where metrics is null
+  // const metricsExist =  projects.filter((project) => project.metrics !== null);
 
-  return metricsExist.map((project, index) => ({
+  return projects.map((project, index) => ({
     ...project,
     rank: index,
   }));

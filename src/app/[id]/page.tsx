@@ -1,17 +1,11 @@
 import ShareCardLoader from "@/components/Details/ShareCardLoader";
-import { fetchApplications } from "@/services/ezrfApi";
 import { NEXT_PUBLIC_URL, OG_DESCRIPTION, OG_IMAGES, OG_TITLE } from "@/services/ezrfApi/config";
 import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import type { Metadata } from 'next';
 
-
-
 interface Params {
     id: string;
 }
-
-
-
 
 export async function generateMetadata({
     params,
@@ -23,7 +17,6 @@ export async function generateMetadata({
 
     const frameMetadata = getFrameMetadata({
         image: `${imageUrl}`,
-        // image: OG_IMAGES[0],
     });
 
     return {
@@ -42,12 +35,9 @@ export async function generateMetadata({
 
 
 export default function Project({ params }: { params: { id: string } }) {
-
-
     return (
         <ShareCardLoader
             id={params.id}
         />
     );
-
 }
