@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar/Navbar";
 import Providers from "@/contexts/providers";
+import { OG_DESCRIPTION, OG_IMAGES, OG_TITLE } from "@/services/ezrfApi/config";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -17,8 +18,13 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "The Sunnys Metrics",
-  description: "Metrics for your Sunny Awards Projects, 2024",
+  title: OG_TITLE,
+  description: OG_DESCRIPTION,
+  openGraph: {
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
+    images: OG_IMAGES,
+  },
 };
 
 export default function RootLayout({

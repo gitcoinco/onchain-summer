@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@coinbase/onchainkit": "^0.32.0",
     "@fontsource/inter": "^5.0.20",
     "@fontsource/sora": "^5.0.19",
     "@radix-ui/react-icons": "^1.3.0",

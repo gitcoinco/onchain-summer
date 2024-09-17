@@ -1,22 +1,43 @@
-"use client"
+import ShareCardLoader from "@/components/Details/ShareCardLoader";
+import { NEXT_PUBLIC_URL, OG_DESCRIPTION, OG_IMAGES, OG_TITLE } from "@/services/ezrfApi/config";
+import { getFrameMetadata } from '@coinbase/onchainkit/frame';
+import type { Metadata } from 'next';
 
-import ShareCard from "@/components/Details/ShareCard";
-import { useProjectsContext } from "@/contexts/projectsContext";
+interface Params {
+    id: string;
+}
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Params;
+}): Promise<Metadata> {
+
+    const imageUrl = `${NEXT_PUBLIC_URL}/${params.id}/images`;
+
+    const frameMetadata = getFrameMetadata({
+        image: `${imageUrl}`,
+    });
+
+    return {
+        title: OG_TITLE,
+        description: OG_DESCRIPTION,
+        openGraph: {
+            title: OG_TITLE,
+            description: OG_DESCRIPTION,
+            images: OG_IMAGES,
+        },
+        other: {
+            ...frameMetadata,
+        },
+    };
+}
+
 
 export default function Project({ params }: { params: { id: string } }) {
-
-    const { projects } = useProjectsContext();
-
     return (
-        <section className="pt-24 mx-auto w-96 ">
-            <div className="px-4 py-4 mx-auto bg-black sm:w-auto">
-                <ShareCard
-                    project={projects.find(project => project.id === params.id)}
-                    onClick={() => console.log("clicked")}
-                    showClose={false}
-                />
-            </div>
-
-        </section>
+        <ShareCardLoader
+            id={params.id}
+        />
     );
 }

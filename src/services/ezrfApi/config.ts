@@ -3,8 +3,14 @@ const productionUrl = "https://ezrf-impact.vercel.app";
 export const EZRF_API_URL = `${productionUrl}/api/trpc/`;
 // export const EZRF_API_URL = `http://localhost:3000/api/trpc/`;
 
-export const SHARE_URL = "https://metrics.thesunnyawards.fun/";
-// export const SHARE_URL = "localhost:3000/";
+export const NEXT_PUBLIC_URL =
+  process.env.NODE_ENV == 'development' ? 'http://localhost:3000' : 'https://metrics.thesunnyawards.fun';
+
+export const SHARE_URL = NEXT_PUBLIC_URL + "/";
+
+export const OG_TITLE = 'Metrics | The Sunny Awards';
+export const OG_DESCRIPTION = 'Metrics for The Sunny Awards';
+export const OG_IMAGES = [`${NEXT_PUBLIC_URL}/share.png`];
 
 type Round = {
   id: string;

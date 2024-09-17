@@ -3,9 +3,10 @@ import { ProjectWithRank } from "@/services/ezrfApi/types";
 import { Users, ArrowRightLeft, Activity, MessageSquare, X, Share2Icon } from "lucide-react"
 import { Button } from "../ui/button";
 import logo from "@/images/logopng.png"
-import Image from "next/image";
+// import Image from "next/image";
 import { SHARE_URL } from "@/services/ezrfApi/config";
 import { toast } from "react-toastify";
+import Image from "next/image";
 
 interface ShareCardProps {
   project: ProjectWithRank | undefined;
@@ -99,7 +100,7 @@ export default function ShareCard({
             </div>
             <div className="flex items-center gap-2">
               <ArrowRightLeft className="w-4 h-4 text-muted-foreground" />
-              <span className="text-sm font-medium">Transactions</span>
+              <span className="text-sm font-medium">Tx</span>
             </div>
             <div className="flex items-center gap-2">
               <Activity className="w-4 h-4 text-muted-foreground" />
@@ -114,7 +115,7 @@ export default function ShareCard({
           <div className="space-y-2">
             <div className="text-sm font-semibold">{getMetric(project, "active_addresses_90D")}</div>
             <div className="text-sm font-semibold">{getMetric(project, "transactions_90D")}</div>
-            <div className="text-sm font-semibold">{getMetric(project, "daily_active_addresses_180D")}</div>
+            <div className="text-sm font-semibold">{getMetric(project, "daily_active_addresses_90D")}</div>
             <div className="text-sm font-semibold">{getMetric(project, "farcaster_users_90D")}</div>
 
           </div>
@@ -129,7 +130,7 @@ export default function ShareCard({
         </div>
       </CardContent>
       <Image src={logo} alt="Logo" width={100} className="float-right pb-2 pr-2" />
-
+      
     </Card>
   )
 }
