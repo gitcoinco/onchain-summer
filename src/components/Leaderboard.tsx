@@ -88,10 +88,6 @@ export function Leaderboard() {
             </TabPanel>
           </Tabs>
         </div>
-
-
-
-
         <div className="gap-2 p-12 text-sm text-white ">
           <div className="flex ">
           <InfoIcon className="w-4 h-4 mr-2 min-w-4" />
@@ -107,9 +103,6 @@ export function Leaderboard() {
             <div>Don't see your project or think the numbers are off? Please <span className="underline"><Link href="https://register.thesunnyawards.fun/">click here</Link></span> to edit your application. The address you provide will be queried against transactions, traces, and logs datasets for relevant metrics.</div>
           </div>
 
-
-
-
         </div>
 
       </div>
@@ -120,7 +113,6 @@ export function Leaderboard() {
               handleViewerClick(undefined);
             }}
             project={selectedProject}
-          // image={viewed}
           />
         </>
       ) : (
