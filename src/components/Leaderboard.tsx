@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useProjectsContext } from "@/contexts/projectsContext";
 import { InfoIcon } from "lucide-react";
+import Link from "next/link";
 
 
 export function Leaderboard() {
@@ -50,8 +51,8 @@ export function Leaderboard() {
 
       <div className="sticky z-10 bg-black rounded-md">
         <div className="px-6 lg:px-8 ">
-      
-          
+
+
           <Tabs className="pt-12">
             <TabList>
               <Tab>App</Tab>
@@ -90,27 +91,26 @@ export function Leaderboard() {
 
 
 
-    
-        <div className="flex flex-col items-start gap-2 p-12 text-sm text-white">
-            <div className="flex items-center gap-2">
-              <InfoIcon className="w-4 h-4" />
-              <p>Metrics compiled based on open datasets sourced from Dune, Flipside, Goldsky, and Open Source Observer.</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <InfoIcon className="w-4 h-4" />
-              <p>Metrics are refreshed weekly, come back and check for updates.</p>
-            </div>
 
-            <div className="flex items-center gap-2">
-              <InfoIcon className="w-4 h-4" />
-              <p>Don't see your project or think the numbers are off? Please click here to edit your application. The address you provide will be queried against transactions, traces, and logs datasets for relevant metrics.
-              </p>
-            </div>
-
-
-
-
+        <div className="gap-2 p-12 text-sm text-white ">
+          <div className="flex ">
+          <InfoIcon className="w-4 h-4 mr-2 min-w-4" />
+          <div>Metrics compiled based on open datasets sourced from Dune, Flipside, Goldsky, and Open Source Observer.</div>
           </div>
+          <div className="flex py-4 ">
+          <InfoIcon className="w-4 h-4 mr-2 min-w-4" />
+          <div>Metrics are refreshed weekly, come back and check for updates.</div>
+          </div>
+
+          <div className="flex ">
+            <InfoIcon className="w-4 h-4 mr-2 min-w-4" />
+            <div>Don't see your project or think the numbers are off? Please <span className="underline"><Link href="https://register.thesunnyawards.fun/">click here</Link></span> to edit your application. The address you provide will be queried against transactions, traces, and logs datasets for relevant metrics.</div>
+          </div>
+
+
+
+
+        </div>
 
       </div>
       {isDetailsOpen ? (

@@ -14,15 +14,11 @@ interface ShareCardProps {
 }
 
 
-
 function getMetric(project: ProjectWithRank | undefined, metric: string) {
-
   return project?.metrics?.[metric]
     ? project?.metrics[metric].toLocaleString('en-US', { maximumFractionDigits: 2 })
     : "0"
 }
-
-
 
 export default function ShareCard({
   project,
@@ -37,34 +33,32 @@ export default function ShareCard({
 
 
   return (
-    <Card className="w-full max-w-md pb-8 overflow-hidden text-white bg-black">
-      <Image src={logo} alt="Logo" width={100} className="absolute right-14 bottom-14" />
+    <Card className="w-full max-w-md overflow-hidden text-white bg-black">
 
       {showClose ? (
-        <Button
-          variant="ghost"
-          size="icon"
-          className="absolute top-14 right-14"
-          onClick={onClick}
-          aria-label="Close"
-        >
-          <X className="w-4 h-4" />
-        </Button>
-      ) : null
-      }
-
-      {showClose ? (
+        <div className="float-right p-1">
 
         <Button
           variant="ghost"
           size="icon"
-          className="absolute top-14 right-24"
+          className=""
           onClick={share}
           aria-label="Share"
         >
           <Share2Icon className="w-4 h-4" />
 
         </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          className=""
+          onClick={onClick}
+          aria-label="Close"
+        >
+          <X className="w-4 h-4" />
+        </Button>
+        </div>
+
       ) : null
       }
 
@@ -134,6 +128,8 @@ export default function ShareCard({
           </div>
         </div>
       </CardContent>
+      <Image src={logo} alt="Logo" width={100} className="float-right pb-2 pr-2" />
+
     </Card>
   )
 }

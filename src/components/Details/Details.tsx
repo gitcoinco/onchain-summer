@@ -13,7 +13,7 @@ export default function Details({ onClick, project }: DetailsProps) {
         className="fixed inset-0 bg-black opacity-80 navbar-backdrop"
         onClick={onClick}
       ></div>
-      <div className="w-screen px-4 py-4 -translate-x-1/2 -translate-y-1/2 bg-black sm:w-auto md:py-12 md:px-12">
+      <div className="w-screen px-4 px-12 -translate-x-1/2 -translate-y-1/2 bg-black sm:w-auto">
         <ShareCard
           project={project}
           showClose={true}
