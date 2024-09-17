@@ -4,7 +4,7 @@ import { Users, ArrowRightLeft, Activity, MessageSquare, X, Share2Icon } from "l
 import { Button } from "../ui/button";
 import logo from "@/images/logopng.png"
 // import Image from "next/image";
-import { NEXT_PUBLIC_URL, SHARE_URL } from "@/services/ezrfApi/config";
+import { SHARE_URL } from "@/services/ezrfApi/config";
 import { toast } from "react-toastify";
 import Image from "next/image";
 

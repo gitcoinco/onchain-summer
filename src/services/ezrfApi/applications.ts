@@ -29,7 +29,7 @@ export const fetchApplications = async (pageParam = 0, searchId : string | undef
   }
 
   const data: ProjectsApiResponse = await res.json();
-  let projects = data.result.data.json;
+  const projects = data.result.data.json;
 
   //TODO filter out projects where metrics is null
   // const metricsExist =  projects.filter((project) => project.metrics !== null);
