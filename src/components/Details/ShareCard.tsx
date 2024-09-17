@@ -2,10 +2,11 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { ProjectWithRank } from "@/services/ezrfApi/types";
 import { Users, ArrowRightLeft, Activity, MessageSquare, X, Share2Icon } from "lucide-react"
 import { Button } from "../ui/button";
-// import logo from "@/images/logopng.png"
+import logo from "@/images/logopng.png"
 // import Image from "next/image";
 import { NEXT_PUBLIC_URL, SHARE_URL } from "@/services/ezrfApi/config";
 import { toast } from "react-toastify";
+import Image from "next/image";
 
 interface ShareCardProps {
   project: ProjectWithRank | undefined;
@@ -128,8 +129,8 @@ export default function ShareCard({
           </div>
         </div>
       </CardContent>
-      <img src={`${NEXT_PUBLIC_URL}/logo.png`} alt="Logo" width={100} className="float-right pb-2 pr-2" />
-
+      <Image src={logo} alt="Logo" width={100} className="float-right pb-2 pr-2" />
+      
     </Card>
   )
 }

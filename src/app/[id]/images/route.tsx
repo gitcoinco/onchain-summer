@@ -9,6 +9,8 @@ async function getProject(id: string) {
     try {
         const projects = await fetchApplications(0, id);
         if (projects.length > 0) {
+            console.log("loading metadata for: " + projects[0].name);
+            console.log("loading metadata for: " + projects[0].id);
             return projects[0];
         }
     } catch (error) {
