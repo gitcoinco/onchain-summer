@@ -2,13 +2,14 @@ import { EZRF_API_URL, ROUND } from "./config";
 import { ProjectsApiResponse } from "./types";
 import { encodeInput } from "./utils";
 
-export const fetchApplications = async (pageParam = 0) => {
+export const fetchApplications = async (pageParam = 0, searchId : string | undefined = undefined) => {
   console.log("fetching page: " + pageParam);
   const encodedInput = encodeInput({
     orderBy: "time",
     sortOrder: "asc",
     // limit: 200, // TODO: remove in case of not using infinite query
     cursor: pageParam,
+    ...(searchId ? {search: searchId}: {})
   });
 
   const res = await fetch(
