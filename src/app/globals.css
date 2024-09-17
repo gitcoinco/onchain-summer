@@ -87,3 +87,9 @@ body {
 .react-tabs__tab-panel--selected {
   display: block;
 }
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}

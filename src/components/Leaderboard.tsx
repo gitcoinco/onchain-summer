@@ -10,6 +10,8 @@ import { ProjectWithRank } from "@/services/ezrfApi/types";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useProjectsContext } from "@/contexts/projectsContext";
+import { InfoIcon } from "lucide-react";
+import Link from "next/link";
 
 
 export function Leaderboard() {
@@ -37,7 +39,7 @@ export function Leaderboard() {
         style={{ width: "100%", margin: "0 auto" }}
       />
 
-      <div className="py-32 lg:py-52 ">
+      <div className="py-32 ">
         <div className="absolute left-0 w-4/5 top-36 md:top-56 md:w-2/5">
           <Image
             src={hero}
@@ -49,6 +51,8 @@ export function Leaderboard() {
 
       <div className="sticky z-10 bg-black rounded-md">
         <div className="px-6 lg:px-8 ">
+
+
           <Tabs className="pt-12">
             <TabList>
               <Tab>App</Tab>
@@ -64,26 +68,43 @@ export function Leaderboard() {
                 isError={isError} />
             </TabPanel>
             <TabPanel>
-              <ProjectsTable
+              <div className="text-2xl text-center py-44">
+                Coming Soon!
+              </div>
+              {/* <ProjectsTable
                 filter="creator"
                 onRowClick={handleViewerClick} 
                 projects={projects}
                 isPending={isPending}
-                isError={isError} />
+                isError={isError} /> */}
             </TabPanel>
             <TabPanel>
               <ProjectsTable
                 filter="other"
-                onRowClick={handleViewerClick} 
+                onRowClick={handleViewerClick}
                 projects={projects}
                 isPending={isPending}
                 isError={isError} />
             </TabPanel>
           </Tabs>
         </div>
-        <div className="pb-12 text-xl text-center text-white pt-36 font-sora ">
-          We'll be refreshing data weekly, come back and check!
+        <div className="gap-2 p-12 text-sm text-white ">
+          <div className="flex ">
+          <InfoIcon className="w-4 h-4 mr-2 min-w-4" />
+          <div>Metrics compiled based on open datasets sourced from Dune, Flipside, Goldsky, and Open Source Observer.</div>
+          </div>
+          <div className="flex py-4 ">
+          <InfoIcon className="w-4 h-4 mr-2 min-w-4" />
+          <div>Metrics are refreshed weekly, come back and check for updates.</div>
+          </div>
+
+          <div className="flex ">
+            <InfoIcon className="w-4 h-4 mr-2 min-w-4" />
+            <div>Don't see your project or think the numbers are off? Please <span className="underline"><Link href="https://register.thesunnyawards.fun/">click here</Link></span> to edit your application. The address you provide will be queried against transactions, traces, and logs datasets for relevant metrics.</div>
+          </div>
+
         </div>
+
       </div>
       {isDetailsOpen ? (
         <>
@@ -92,7 +113,6 @@ export function Leaderboard() {
               handleViewerClick(undefined);
             }}
             project={selectedProject}
-          // image={viewed}
           />
         </>
       ) : (
