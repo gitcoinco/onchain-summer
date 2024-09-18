@@ -30,28 +30,50 @@ export default function ShareCardBare({
         flexWrap: 'nowrap',
         backgroundColor: 'black',
         // backgroundImage: 'radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)',
-        backgroundSize: '100px 100px',
+        backgroundImage: `url("${NEXT_PUBLIC_URL}/slidebg.png")`,
+        backgroundSize: '100% 100%',
+        backgroundRepeat: 'no-repeat',
+        
       }}
     >
+
+      {/* <div
+        style={{
+          height: 500,
+          width: 800,
+          backgroundColor: 'black',
+          border: '1px solid white',
+          borderRadius: '2%',
+
+
+        }}
+      /> */}
 
       <img
         src={project?.metadata.sunnyAwards.avatarUrl}
         height={120}
         style={{
           position: 'absolute',
-          top: '100',
-          left: '150'
+          top: '50',
+          left: '450',
+          borderRadius: "9999px",
+          aspectRatio: "80/80",
+          objectFit: "cover",
         }}
       />
 
       <p
         style={{
           position: 'absolute',
-          top: '100',
-          left: '350',
+          top: '30',
+          left: '600',
           color: 'white',
-          fontSize: '56px',
+          fontSize: '42px',
           textAlign: 'left',
+          textWrap: 'wrap',
+          maxWidth: "500px",
+          maxLines: "2",
+          blockOverflow: 'ellipsis',
         }}
       >{project?.name}</p>
 
@@ -61,7 +83,7 @@ export default function ShareCardBare({
         style={{
           position: 'absolute',
           top: '250',
-          left: '400',
+          left: '600',
           color: 'white',
           fontSize: '24px',
           textAlign: 'left',
@@ -76,7 +98,7 @@ export default function ShareCardBare({
         style={{
           position: 'absolute',
           top: '250',
-          left: '700',
+          left: '900',
           color: 'white',
           fontSize: '24px',
           textAlign: 'left',
@@ -95,7 +117,7 @@ export default function ShareCardBare({
         style={{
           position: 'absolute',
           top: '305',
-          left: '250',
+          left: '400',
           color: 'white',
           fontSize: '24px',
           textAlign: 'left',
@@ -105,7 +127,7 @@ export default function ShareCardBare({
         style={{
           position: 'absolute',
           top: '300',
-          left: '400',
+          left: '600',
           color: 'white',
           fontSize: '32px',
           textAlign: 'left',
@@ -118,7 +140,7 @@ export default function ShareCardBare({
         style={{
           position: 'absolute',
           top: '300',
-          left: '700',
+          left: '900',
           color: 'white',
           fontSize: '32px',
           textAlign: 'left',
@@ -135,7 +157,7 @@ export default function ShareCardBare({
         style={{
           position: 'absolute',
           top: '355',
-          left: '250',
+          left: '400',
           color: 'white',
           fontSize: '24px',
           textAlign: 'left',
@@ -145,7 +167,7 @@ export default function ShareCardBare({
         style={{
           position: 'absolute',
           top: '350',
-          left: '400',
+          left: '600',
           color: 'white',
           fontSize: '32px',
           textAlign: 'left',
@@ -158,7 +180,7 @@ export default function ShareCardBare({
         style={{
           position: 'absolute',
           top: '350',
-          left: '700',
+          left: '900',
           color: 'white',
           fontSize: '32px',
           textAlign: 'left',
@@ -174,7 +196,7 @@ export default function ShareCardBare({
         style={{
           position: 'absolute',
           top: '405',
-          left: '250',
+          left: '400',
           color: 'white',
           fontSize: '24px',
           textAlign: 'left',
@@ -184,7 +206,7 @@ export default function ShareCardBare({
         style={{
           position: 'absolute',
           top: '400',
-          left: '400',
+          left: '600',
           color: 'white',
           fontSize: '32px',
           textAlign: 'left',
@@ -197,7 +219,7 @@ export default function ShareCardBare({
         style={{
           position: 'absolute',
           top: '400',
-          left: '700',
+          left: '900',
           color: 'white',
           fontSize: '32px',
           textAlign: 'left',
@@ -213,7 +235,7 @@ export default function ShareCardBare({
         style={{
           position: 'absolute',
           top: '455',
-          left: '250',
+          left: '400',
           color: 'white',
           fontSize: '24px',
           textAlign: 'left',
@@ -223,7 +245,7 @@ export default function ShareCardBare({
         style={{
           position: 'absolute',
           top: '450',
-          left: '400',
+          left: '600',
           color: 'white',
           fontSize: '32px',
           textAlign: 'left',
@@ -236,7 +258,7 @@ export default function ShareCardBare({
         style={{
           position: 'absolute',
           top: '450',
-          left: '700',
+          left: '900',
           color: 'white',
           fontSize: '32px',
           textAlign: 'left',
@@ -246,7 +268,7 @@ export default function ShareCardBare({
       >{getMetric("farcaster_users_180D")}</p>
       <img
         src={NEXT_PUBLIC_URL + "/logo.png"}
-        height={80}
+        height={40}
         style={{
           position: 'absolute',
           bottom: '10',
