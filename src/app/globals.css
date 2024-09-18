@@ -26,6 +26,11 @@ body {
   }
 }
 
+@font-face {
+  font-family: "geist";
+  src: url("../fonts/GeistVF.woff");
+}
+
 
 
 .react-tabs {
@@ -48,7 +53,8 @@ body {
   margin: 0 10px 0 0;
   cursor: pointer;
   color: #979998;
-  font-family: 'Courier New', Courier, monospace;
+  /* font-family: 'Courier New', Courier, monospace; */
+  font-family: 'geist';
   font-weight: 600;
 }
 
