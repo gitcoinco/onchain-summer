@@ -1,5 +1,5 @@
 import ShareCardLoader from "@/components/Details/ShareCardLoader";
-import { NEXT_PUBLIC_URL, OG_DESCRIPTION, OG_IMAGES, OG_TITLE } from "@/services/ezrfApi/config";
+import { NEXT_PUBLIC_URL, OG_DESCRIPTION, OG_TITLE } from "@/services/ezrfApi/config";
 import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import type { Metadata } from 'next';
 
@@ -38,7 +38,7 @@ export async function generateMetadata({
         openGraph: {
             title: OG_TITLE,
             description: OG_DESCRIPTION,
-            images: OG_IMAGES,
+            images: [`${imageUrl}`],
         },
         other: {
             ...frameMetadata,
