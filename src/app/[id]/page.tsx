@@ -17,6 +17,19 @@ export async function generateMetadata({
 
     const frameMetadata = getFrameMetadata({
         image: `${imageUrl}`,
+        buttons: [
+            {
+                label: 'Join the celebration',
+                action: 'link',
+                target: `https://www.thesunnyawards.fun/`,
+            },
+            {
+                label: 'View the metrics!',
+                action: 'link',
+                target: `https://metrics.thesunnyawards.fun/`,
+            },
+        ],
+        
     });
 
     return {
