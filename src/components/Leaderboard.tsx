@@ -68,13 +68,15 @@ export function Leaderboard() {
                 isError={isError} />
             </TabPanel>
             <TabPanel>
-              <ProjectsTable
+            <div className="text-2xl text-center py-44">
+                Coming Soon!
+              </div>
+              {/* <ProjectsTable
                 filter="creator"
-                onRowClick={handleViewerClick}
+                onRowClick={handleViewerClick} 
                 projects={projects}
                 isPending={isPending}
-                isError={isError}
-              />
+                isError={isError} /> */} */}
             </TabPanel>
             <TabPanel>
               <ProjectsTable
