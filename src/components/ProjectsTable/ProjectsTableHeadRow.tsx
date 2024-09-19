@@ -2,8 +2,9 @@ import sortIcon from "../../images/sortIcon.svg";
 import sortIconAsc from "../../images/sortIconAsc.svg";
 import sortIconDesc from "../../images/sortIconDesc.svg";
 import { SortConfig, useProjectsContext } from "../../contexts/projectsContext";
-import { getDisplayName, getMetrics } from "../../services/metrics";
+import { getDescription, getDisplayName, getMetrics } from "../../services/metrics";
 import Image from "next/image";
+import IconWithTooltip from "../IconWithTooltip";
 
 const SortIcon = ({
   field,
@@ -31,9 +32,9 @@ export function ProjectsTableHeadRow() {
   return (
 
     <thead className="text-xs text-header-title">
-      
+
       <tr >
-        <th scope="col" className="px-6 py-3 pr-24 bg-black md:left-0 md:sticky" onClick={() => handleSort("name")}>
+        <th scope="col" className="px-6 py-3 bg-black md:pr-44 md:left-0 md:sticky" onClick={() => handleSort("name")}>
           <div className="flex items-center text-sm text-nowrap">
             Project Name
             <SortIcon field="name" sortConfig={sortConfig} />
@@ -44,12 +45,26 @@ export function ProjectsTableHeadRow() {
             key={index}
             scope="col"
             className="px-12 text-nowrap"
-            onClick={() => handleSort(`metrics.${metric}`)}>
-            <div
-              className="flex items-center">
-              {getDisplayName(metric)}
-              <SortIcon field={`metrics.${metric}`} sortConfig={sortConfig} />
+          >
+            <div className="flex items-center">
+              <div
+                className=""
+                onClick={() => handleSort(`metrics.${metric}`)}
+              >
+                {getDisplayName(metric)}
+              </div>
+              <div className="min-w-4"
+                onClick={() => handleSort(`metrics.${metric}`)}>
+                <SortIcon field={`metrics.${metric}`} sortConfig={sortConfig} />
+              </div>
+              <div className="pt-1 ml-2">
+                <IconWithTooltip text={getDescription(metric)} />
+              </div>
+       
             </div>
+
+
+
           </th>
         ))}
       </tr>

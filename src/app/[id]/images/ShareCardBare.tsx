@@ -29,25 +29,12 @@ export default function ShareCardBare({
         flexDirection: 'column',
         flexWrap: 'nowrap',
         backgroundColor: 'black',
-        // backgroundImage: 'radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)',
         backgroundImage: `url("${NEXT_PUBLIC_URL}/slidebg.png")`,
         backgroundSize: '100% 100%',
         backgroundRepeat: 'no-repeat',
         
       }}
     >
-
-      {/* <div
-        style={{
-          height: 500,
-          width: 800,
-          backgroundColor: 'black',
-          border: '1px solid white',
-          borderRadius: '2%',
-
-
-        }}
-      /> */}
 
       <img
         src={project?.metadata.sunnyAwards.avatarUrl}

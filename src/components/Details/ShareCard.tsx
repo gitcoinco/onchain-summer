@@ -3,10 +3,11 @@ import { ProjectWithRank } from "@/services/ezrfApi/types";
 import { Users, ArrowRightLeft, Activity, MessageSquare, X, Share2Icon } from "lucide-react"
 import { Button } from "../ui/button";
 import logo from "@/images/logopng.png"
-// import Image from "next/image";
 import { SHARE_URL } from "@/services/ezrfApi/config";
 import { toast } from "react-toastify";
 import Image from "next/image";
+import bg from "@/images/slidebg.png"
+import Link from "next/link";
 
 interface ShareCardProps {
   project: ProjectWithRank | undefined;
@@ -32,42 +33,50 @@ export default function ShareCard({
     toast.success("Copied to clipboard")
   }
 
+  console.log(JSON.stringify(project))
 
   return (
     <Card className="w-full max-w-md overflow-hidden text-white bg-black">
 
       {showClose ? (
-        <div className="float-right p-1">
+        <div className="absolute top-2 right-6">
 
-        <Button
-          variant="ghost"
-          size="icon"
-          className=""
-          onClick={share}
-          aria-label="Share"
-        >
-          <Share2Icon className="w-4 h-4" />
+          <Button
+            variant="ghost"
+            size="icon"
+            className=""
+            onClick={share}
+            aria-label="Share"
+          >
+            <Share2Icon className="w-4 h-4" />
 
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon"
-          className=""
-          onClick={onClick}
-          aria-label="Close"
-        >
-          <X className="w-4 h-4" />
-        </Button>
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className=""
+            onClick={onClick}
+            aria-label="Close"
+          >
+            <X className="w-4 h-4" />
+          </Button>
         </div>
 
       ) : null
       }
 
-      <CardHeader className="flex flex-row items-center gap-4 p-6">
 
+
+      <CardHeader className="flex flex-row items-center gap-4 p-6">
+        <Image
+          src={bg}
+          alt="Logo"
+          width={100}
+          className="-mt-6 -ml-6"
+        />
         <img
           alt={`logo`}
-          className="rounded-full"
+          className="-ml-12 rounded-full"
           height="80"
           src={project?.metadata.sunnyAwards.avatarUrl}
           style={{
@@ -76,8 +85,15 @@ export default function ShareCard({
           }}
           width="80"
         />
-        <div className="grid gap-1">
-          <h3 className="text-2xl font-bold leading-none">{project?.name}</h3>
+        <div className="w-full">
+          {project?.metadata?.websiteUrl ? (
+            <Link href={project.metadata.websiteUrl}>
+            <h3 className="flex text-2xl font-bold leading-none">{project?.name}</h3>
+          </Link>
+        ) : (
+            <h3 className="flex text-2xl font-bold leading-none">{project?.name}</h3>
+        )}
+
         </div>
 
       </CardHeader>
@@ -130,7 +146,7 @@ export default function ShareCard({
         </div>
       </CardContent>
       <Image src={logo} alt="Logo" width={100} className="float-right pb-2 pr-2" />
-      
+
     </Card>
   )
 }

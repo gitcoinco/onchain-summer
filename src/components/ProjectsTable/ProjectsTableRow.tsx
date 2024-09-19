@@ -14,9 +14,9 @@ export function ProjectsTableRow({ project, onRowClick }: ProjectsTableRowProps)
     <tr className="cursor-pointer text-header-title" key={project.id} onClick={() => { onRowClick(project) }} >
       <td
         scope="row"
-        className={"px-6 py-2 md:sticky md:left-0 bg-black font-bold text-lg truncate "}
+        className={"px-6 py-2 md:sticky md:left-0 md:mr-44 bg-black font-bold text-lg truncate "}
       >
-        <div className="flex items-center">
+        <div className="flex items-center w-full">
           <Image
             src={project.metadata?.sunnyAwards?.avatarUrl}
             alt={project.name}
@@ -25,7 +25,7 @@ export function ProjectsTableRow({ project, onRowClick }: ProjectsTableRowProps)
             className="mr-2 border border-black rounded-full shrink-0"
           />
           <span
-            className="text-base font-normal truncate max-w-32"
+            className="text-base font-normal truncate max-w-32 md:max-w-44"
             title={project.name}>
             {project.name}
           </span>

@@ -22,8 +22,8 @@ const ProjectsContext = createContext<ProjectsContext | undefined>(undefined);
 
 export const ProjectsProvider = ({ children }: { children: ReactNode }) => {
   const [sortConfig, setSortConfig] = useState<SortConfig>({
-    key: "name",
-    direction: "ascending",
+    key: "metrics.active_addresses_90D",
+    direction: "descending",
   });
 
   const { data: projects, isPending, isError } = useApplications();
