@@ -14,12 +14,14 @@ import { InfoIcon } from "lucide-react";
 import Link from "next/link";
 import IconWithTooltip from "./IconWithTooltip";
 import { info } from "@/services/metrics";
-
+import clsx from "clsx";
+import { SearchInput } from "./SearchInput";
 
 export function Leaderboard() {
 
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectWithRank>();
+  const [searchQuery, setSearchQuery] = useState("");
 
   const { projects, isPending, isError } = useProjectsContext();
 
@@ -30,9 +32,19 @@ export function Leaderboard() {
     }
   };
 
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+
+  const projectsToDisplay =
+    searchQuery === ""
+      ? projects
+      : projects.filter(project =>
+          project.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
   return (
     <div className="w-full pt-24 mx-auto ">
-
       <img
         src="/heroclouds.png"
         alt="clouds"
@@ -51,23 +63,35 @@ export function Leaderboard() {
         </div>
       </div>
 
-      <div className="sticky z-10 bg-black rounded-md">
+      <div className="sticky z-10 bg-black/90 rounded-md">
         <div className="px-6 lg:px-8 ">
-
           <Tabs className="pt-12">
-            <TabList>
-              <Tab>App</Tab>
-              <Tab>Creator</Tab>
-              <Tab>Other</Tab>
-
-              <IconWithTooltip text={info} />
-
+            <TabList className="flex md:items-center md:justify-between md:flex-row items-between justify-center flex-col gap-4">
+              <div className="flex items-center">
+                <Tab
+                  className={clsx(["react-tabs__tab", "rounded"])}
+                  selectedClassName="bg-white/10">
+                  App
+                </Tab>
+                <Tab
+                  className={clsx(["react-tabs__tab", "rounded"])}
+                  selectedClassName="bg-white/10">
+                  Creator
+                </Tab>
+                <Tab
+                  className={clsx(["react-tabs__tab", "rounded"])}
+                  selectedClassName="bg-white/10">
+                  Other
+                </Tab>
+                <IconWithTooltip text={info} />
+              </div>
+              <SearchInput onSearch={handleSearch} />
             </TabList>
             <TabPanel>
               <ProjectsTable
                 filter="app"
                 onRowClick={handleViewerClick}
-                projects={projects}
+                projects={projectsToDisplay}
                 isPending={isPending}
                 isError={isError} />
             </TabPanel>
@@ -77,8 +101,8 @@ export function Leaderboard() {
               </div>
               {/* <ProjectsTable
                 filter="creator"
-                onRowClick={handleViewerClick} 
-                projects={projects}
+                onRowClick={handleViewerClick}
+                projects={projectsToDisplay}
                 isPending={isPending}
                 isError={isError} /> */}
             </TabPanel>
@@ -86,7 +110,7 @@ export function Leaderboard() {
               <ProjectsTable
                 filter="other"
                 onRowClick={handleViewerClick}
-                projects={projects}
+                projects={projectsToDisplay}
                 isPending={isPending}
                 isError={isError} />
             </TabPanel>

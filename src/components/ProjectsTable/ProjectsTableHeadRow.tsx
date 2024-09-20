@@ -30,11 +30,12 @@ export function ProjectsTableHeadRow() {
   const { handleSort, sortConfig } = useProjectsContext();
 
   return (
-
     <thead className="text-xs text-header-title">
-
-      <tr >
-        <th scope="col" className="px-6 py-3 bg-black md:pr-44 md:left-0 md:sticky" onClick={() => handleSort("name")}>
+      <tr>
+        <th
+          scope="col"
+          className="px-6 py-3  md:pr-44 md:left-0 md:sticky"
+          onClick={() => handleSort("name")}>
           <div className="flex items-center text-sm text-nowrap">
             Project Name
             <SortIcon field="name" sortConfig={sortConfig} />
