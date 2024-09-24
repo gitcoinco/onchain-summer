@@ -96,7 +96,7 @@ export function Leaderboard() {
                 isError={isError} />
             </TabPanel>
             <TabPanel>
-              <div className="text-2xl text-center py-44">
+              <div className="text-2xl text-center py-44 text-white">
                 Coming Soon!
               </div>
               {/* <ProjectsTable
