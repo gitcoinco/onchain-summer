@@ -11,11 +11,17 @@ interface ProjectsTableRowProps {
 export function ProjectsTableRow({ project, onRowClick }: ProjectsTableRowProps) {
 
   return (
-    <tr className="cursor-pointer text-header-title" key={project.id} onClick={() => { onRowClick(project) }} >
+    <tr
+      className="cursor-pointer text-header-title hover:bg-black/50"
+      key={project.id}
+      onClick={() => {
+        onRowClick(project);
+      }}>
       <td
         scope="row"
-        className={"px-6 py-2 md:sticky md:left-0 md:mr-44 bg-black font-bold text-lg truncate "}
-      >
+        className={
+          "px-6 py-2 md:sticky md:left-0 md:mr-44 font-bold text-lg truncate "
+        }>
         <div className="flex items-center w-full">
           <Image
             src={project.metadata?.sunnyAwards?.avatarUrl}
