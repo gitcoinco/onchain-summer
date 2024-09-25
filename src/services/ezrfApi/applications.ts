@@ -1,5 +1,5 @@
 import { EZRF_API_URL, ROUND } from "./config";
-import { ProjectsApiResponse, ProjectWithMetrics } from "./types";
+import { ProjectsApiResponse } from "./types";
 import { encodeInput } from "./utils";
 
 export const fetchApplications = async (pageParam = 0, searchId: string | undefined = undefined) => {
@@ -31,32 +31,8 @@ export const fetchApplications = async (pageParam = 0, searchId: string | undefi
   const data: ProjectsApiResponse = await res.json();
   const projects = data.result.data.json;
 
-  console.log("projects length: " + projects.length);
-  const withMeta = projects.filter((project) => project.metadata !== null);
-  console.log("withMeta length: " + withMeta.length);
-
-  // console.log(JSON.stringify(withMeta[0]));
-  
-
   //TODO filter out projects where metrics is null
   // const metricsExist =  projects.filter((project) => project.metrics !== null);
-
-  //remove all duplicate recipient Ids, that's our source of truth here
-  // const recipients = projects.filter((project) => project.batched !== null)
-  // console.log('filtered out null')
-  
-  // .reduce((accumulator: ProjectWithMetrics[], current: ProjectWithMetrics) => {
-  //   const exists = accumulator.find(item => {
-  //     return item.recipient === current.recipient;
-  //   });
-  //   if (!exists) {
-  //     accumulator = accumulator.concat(current);
-  //   }
-  //   return accumulator;
-  // }, []);
-
-  // console.log("recipients length: " + recipients.length);
-
 
   //find all projects where metrics is null and set each metric to zero
   projects.forEach((project) => {
