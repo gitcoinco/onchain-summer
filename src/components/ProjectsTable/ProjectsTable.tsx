@@ -43,7 +43,7 @@ export function ProjectsTable(props: TableProps) {
             .map((project, index) => (
               <ProjectsTableRow
                 onRowClick={props.onRowClick}
-                key={project.id}
+                key={project.recipient}
                 index={index}
                 project={project}
               />

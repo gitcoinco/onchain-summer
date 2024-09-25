@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ProjectWithRank } from "../../services/ezrfApi/types";
 import { getMetrics } from "../../services/metrics";
+import award from "@/images/award.png";
 
 interface ProjectsTableRowProps {
   index: number;
@@ -13,16 +14,17 @@ export function ProjectsTableRow({ project, onRowClick }: ProjectsTableRowProps)
   return (
     <tr
       className="cursor-pointer text-header-title hover:bg-black/50"
-      key={project.id}
+      key={project.recipient}
       onClick={() => {
         onRowClick(project);
       }}>
       <td
         scope="row"
         className={
-          "px-6 py-2 md:sticky md:left-0 md:mr-44 font-bold text-lg truncate "
+          "px-6 py-2 md:sticky md:left-0 md:mr-44 font-bold text-lg truncate bg-black "
         }>
         <div className="flex items-center w-full">
+          {project.metadata.sunnyAwards?.avatarUrl ? 
           <Image
             src={project.metadata?.sunnyAwards?.avatarUrl}
             alt={project.name}
@@ -30,6 +32,15 @@ export function ProjectsTableRow({ project, onRowClick }: ProjectsTableRowProps)
             height={24}
             className="mr-2 border border-black rounded-full shrink-0"
           />
+           : 
+           <Image
+            src={award}
+            alt="missing logo :)"
+            width={24}
+            height={24}
+            className="mr-2 border border-black rounded-full shrink-0"
+          />
+           }
           <span
             className="text-base font-normal truncate max-w-32 md:max-w-44"
             title={project.name}>

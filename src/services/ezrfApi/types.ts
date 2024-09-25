@@ -25,6 +25,8 @@ export type ProjectWithMetrics = {
   };
   metrics?: Metrics;
   nextPage: number;
+  batched: Metrics & {name: string}
+  recipient: string;
 };
 
 type ContributionLink = {
