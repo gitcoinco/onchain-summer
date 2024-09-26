@@ -35,16 +35,15 @@ export function ProjectsTable(props: TableProps) {
               project =>
                 project.metadata?.sunnyAwards.projectType === props.filter
             )
-            .map((project, index) => {
-              console.log(index)
-              return (
+            .map((project, index) => 
+              (
               <ProjectsTableRow
                 onRowClick={props.onRowClick}
                 key={`${project.recipient}_${project.name}`}
                 index={index}
                 project={project}
               />
-            )})}
+            ))}
         </tbody>
       </table>
     </div>
