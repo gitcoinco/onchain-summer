@@ -21,7 +21,7 @@ export function ProjectsTableRow({ project, onRowClick }: ProjectsTableRowProps)
       <td
         scope="row"
         className={
-          "px-6 py-2 md:sticky md:left-0 md:mr-44 font-bold text-lg truncate bg-black "
+          "px-6 py-2 md:sticky md:left-0 md:mr-44 font-bold text-lg truncate "
         }>
         <div className="flex items-center w-full">
           {project.metadata.sunnyAwards?.avatarUrl ? 
