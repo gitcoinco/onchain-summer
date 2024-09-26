@@ -20,7 +20,7 @@ export default function ShareCardLoader({
         <ShareCard
           project={
             
-            projects.find(project => project.recipient === id || project.applicationIds.includes(id))
+            projects.find(project => project.recipient === id || project?.applicationIds?.includes(id))
           }
           showClose={false}
           onClick={() => console.log("clicked")} />
