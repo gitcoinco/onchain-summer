@@ -29,7 +29,16 @@ export default function ShareCard({
 }: ShareCardProps) {
 
   function share() {
-    navigator.clipboard.writeText(SHARE_URL + project?.recipient)
+
+    const firstApplicationId = project?.applicationIds && project.applicationIds.length > 0 ? project.applicationIds[0] : ""
+
+    // if recipient is 0x0 and if app id exists, use app id
+    // if recipient is 0x0 and app id doesn't exist then we can't have a project
+    // if recipient is not 0x0, use recipient
+
+
+    const shareId = (project?.recipient === "0x0000000000000000000000000000000000000000" ? firstApplicationId : project?.recipient)
+    navigator.clipboard.writeText(SHARE_URL + shareId)
     toast.success("Copied to clipboard")
   }
 
