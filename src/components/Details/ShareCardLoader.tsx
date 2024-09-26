@@ -15,9 +15,13 @@ export default function ShareCardLoader({
 
   return (
     <div className="flex">
+      {/* <div>{projects.find(project => {project.recipient === id || project.applicationIds.includes(id)})?.name}</div> */}
       <div className="flex pt-24 mx-auto">
         <ShareCard
-          project={projects.find(project => project.recipient === id)}
+          project={
+            
+            projects.find(project => project.recipient === id || project.applicationIds.includes(id))
+          }
           showClose={false}
           onClick={() => console.log("clicked")} />
       </div>
