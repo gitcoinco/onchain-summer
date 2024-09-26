@@ -2,7 +2,7 @@ import { EZRF_API_URL, ROUND } from "./config";
 import { ProjectsApiResponse } from "./types";
 import { encodeInput } from "./utils";
 
-export const fetchApplications = async (pageParam = 0, searchId : string | undefined = undefined) => {
+export const fetchApplications = async (pageParam = 0, searchId: string | undefined = undefined) => {
   console.log("fetching page: " + pageParam);
   console.log("fetching searchId: " + searchId);
   const encodedInput = encodeInput({
@@ -10,7 +10,7 @@ export const fetchApplications = async (pageParam = 0, searchId : string | undef
     sortOrder: "asc",
     // limit: 200, // TODO: remove in case of not using infinite query
     cursor: pageParam,
-    ...(searchId ? {search: searchId}: {})
+    ...(searchId ? { search: searchId } : {})
   });
 
   const res = await fetch(
@@ -35,9 +35,8 @@ export const fetchApplications = async (pageParam = 0, searchId : string | undef
   // const metricsExist =  projects.filter((project) => project.metrics !== null);
 
   //find all projects where metrics is null and set each metric to zero
-
   projects.forEach((project) => {
-    if (project.metrics === null){
+    if (project.metrics === null) {
       project.metrics = {
         active_addresses_90D: 0,
         transactions_90D: 0,
