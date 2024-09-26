@@ -27,28 +27,24 @@ export function ProjectsTable(props: TableProps) {
 
   return (
     <div className="relative pt-12 overflow-x-auto custom-scrollbar">
-      <div
-        className="custom-scrollbar-hide"
-        style={{ overflowY: "scroll", maxHeight: "80vh" }}>
-        <table className="w-full text-xl text-black border-collapse">
-          <ProjectsTableHeadRow />
-          <tbody>
-            {props.projects
-              .filter(
-                project =>
-                  project.metadata.sunnyAwards.projectType === props.filter
-              )
-              .map((project, index) => (
-                <ProjectsTableRow
-                  onRowClick={props.onRowClick}
-                  key={project.recipient}
-                  index={index}
-                  project={project}
-                />
-              ))}
-          </tbody>
-        </table>
-      </div>
+      <table className="w-full text-xl text-black border-collapse">
+        <ProjectsTableHeadRow />
+        <tbody>
+          {props.projects
+            .filter(
+              project =>
+                project.metadata.sunnyAwards.projectType === props.filter
+            )
+            .map((project, index) => (
+              <ProjectsTableRow
+                onRowClick={props.onRowClick}
+                key={project.recipient}
+                index={index}
+                project={project}
+              />
+            ))}
+        </tbody>
+      </table>
     </div>
   );
 }
