@@ -29,7 +29,7 @@ export default function ShareCard({
 }: ShareCardProps) {
 
   function share() {
-    navigator.clipboard.writeText(SHARE_URL + project?.recipient)
+    navigator.clipboard.writeText(SHARE_URL + project?.recipient.split("_")[0])
     toast.success("Copied to clipboard")
   }
 
