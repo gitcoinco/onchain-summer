@@ -13,7 +13,7 @@ import { useProjectsContext } from "@/contexts/projectsContext";
 import { InfoIcon } from "lucide-react";
 import Link from "next/link";
 import IconWithTooltip from "./IconWithTooltip";
-import { info } from "@/services/metrics";
+import { APP_METRICS_TYPE, CREATOR_METRICS_TYPE, info } from "@/services/metrics";
 import clsx from "clsx";
 import { SearchInput } from "./SearchInput";
 
@@ -90,25 +90,28 @@ export function Leaderboard() {
             <TabPanel>
               <ProjectsTable
                 filter="app"
+                metricType={APP_METRICS_TYPE}
                 onRowClick={handleViewerClick}
                 projects={projectsToDisplay}
                 isPending={isPending}
                 isError={isError} />
             </TabPanel>
             <TabPanel>
-              <div className="text-2xl text-center py-44 text-white">
+              {/* <div className="text-2xl text-center py-44 text-white">
                 Coming Soon!
-              </div>
-              {/* <ProjectsTable
+              </div> */}
+              <ProjectsTable
                 filter="creator"
+                metricType={CREATOR_METRICS_TYPE}
                 onRowClick={handleViewerClick}
                 projects={projectsToDisplay}
                 isPending={isPending}
-                isError={isError} /> */}
+                isError={isError} />
             </TabPanel>
             <TabPanel>
               <ProjectsTable
                 filter="other"
+                metricType={APP_METRICS_TYPE}
                 onRowClick={handleViewerClick}
                 projects={projectsToDisplay}
                 isPending={isPending}

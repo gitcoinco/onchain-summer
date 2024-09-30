@@ -2,7 +2,7 @@ import sortIcon from "../../images/sortIcon.svg";
 import sortIconAsc from "../../images/sortIconAsc.svg";
 import sortIconDesc from "../../images/sortIconDesc.svg";
 import { SortConfig, useProjectsContext } from "../../contexts/projectsContext";
-import { getDescription, getDisplayName, getMetrics } from "../../services/metrics";
+import { APP_METRICS_TYPE, getDescription, getDisplayName, getMetrics } from "../../services/metrics";
 import Image from "next/image";
 import IconWithTooltip from "../IconWithTooltip";
 
@@ -26,7 +26,11 @@ const SortIcon = ({
   }
 };
 
-export function ProjectsTableHeadRow() {
+type Props = {
+  metricType: number;
+}
+
+export function ProjectsTableHeadRow(props: Props) {
   const { handleSort, sortConfig } = useProjectsContext();
 
   return (
@@ -39,9 +43,17 @@ export function ProjectsTableHeadRow() {
           <div className="flex items-center text-sm text-nowrap">
             Project Name
             <SortIcon field="name" sortConfig={sortConfig} />
+            {/* {props.metricType === APP_METRICS_TYPE ? (
+              <SortIcon field="name" sortConfig={sortConfig} />
+            ) : (
+              <SortIcon field="metadata.name" sortConfig={sortConfig} />
+            )} */}
+
+
+
           </div>
         </th>
-        {getMetrics().map((metric, index) => (
+        {getMetrics(props.metricType).map((metric, index) => (
           <th
             key={index}
             scope="col"
@@ -61,7 +73,7 @@ export function ProjectsTableHeadRow() {
               <div className="pt-1 ml-2">
                 <IconWithTooltip text={getDescription(metric)} />
               </div>
-       
+
             </div>
 
 

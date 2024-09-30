@@ -6,6 +6,7 @@ import Image from "next/image";
 
 type TableProps = {
   filter: string;
+  metricType: number;
   onRowClick: (project: ProjectWithRank) => void;
   projects: ProjectWithRank[];
   isPending: boolean;
@@ -28,12 +29,15 @@ export function ProjectsTable(props: TableProps) {
   return (
     <div className="relative pt-12 overflow-x-auto custom-scrollbar">
       <table className="w-full text-xl text-black border-collapse">
-        <ProjectsTableHeadRow />
+        <ProjectsTableHeadRow
+          metricType={props.metricType}
+        />
         <tbody>
           {props.projects
             .filter(
               project =>
                 project.metadata?.sunnyAwards.projectType === props.filter
+              && project.metrics?.metrics_type === props.metricType
             )
             .map((project, index) => 
               (
@@ -42,6 +46,7 @@ export function ProjectsTable(props: TableProps) {
                 key={`${project.recipient}_${project.name}`}
                 index={index}
                 project={project}
+                metricType={props.metricType}
               />
             ))}
         </tbody>

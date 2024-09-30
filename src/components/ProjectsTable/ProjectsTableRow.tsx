@@ -7,9 +7,10 @@ interface ProjectsTableRowProps {
   index: number;
   project: ProjectWithRank;
   onRowClick: (project: ProjectWithRank) => void;
+  metricType: number;
 }
 
-export function ProjectsTableRow({ project, onRowClick }: ProjectsTableRowProps) {
+export function ProjectsTableRow({ project, onRowClick, metricType }: ProjectsTableRowProps) {
 
   return (
     <tr
@@ -30,26 +31,26 @@ export function ProjectsTableRow({ project, onRowClick }: ProjectsTableRowProps)
             alt={project.name}
             width={24}
             height={24}
-            className="mr-2 border border-black rounded-full shrink-0"
+            className="mr-2 border border-black rounded-full w-6 h-6"
           />
            : 
            <Image
             src={award}
             alt="missing logo :)"
             width={24}
-            height={24}
-            className="mr-2 border border-black rounded-full shrink-0"
+            height={40}
+            className="mr-2 border border-black rounded-full shrink-0 w-6 h-6"
           />
            }
           <span
             className="text-base font-normal truncate max-w-32 md:max-w-44"
-            title={project.name}>
-            {project.name}
+            title={project.name ? project.name : project.metadata.name}>
+            {project.name ? project.name : project.metadata.name}
           </span>
         </div>
       </td>
 
-      {getMetrics().map((metric, index) => (
+      {getMetrics(metricType).map((metric, index) => (
         <td key={index} className={"px-12 text-base"}>
           <div className="">
             <span className="">

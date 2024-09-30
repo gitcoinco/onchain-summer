@@ -5,8 +5,10 @@ type Metric = {
     description: string;
 }
 
-const metrics: Metric[] = [
+export const APP_METRICS_TYPE = 0;
+export const CREATOR_METRICS_TYPE = 1;
 
+const metrics: Metric[] = [
 
     { name: 'active_addresses_90D', displayName: '90d Users', description: 'The number of unique addresses that have interacted in the last 90 days.' },
     { name: 'active_addresses_180D', displayName: '180d Users', description: 'The number of unique addresses that have interacted in the last 180 days.' },
@@ -19,17 +21,32 @@ const metrics: Metric[] = [
 
 ]
 
+const creatorMetrics: Metric[] = [
+
+    { name: 'num_drops', displayName: 'Drops', description: 'The number of drops for this creator.' },
+    { name: 'num_unique_minters', displayName: 'Minters', description: 'The number of unique minters for this creator.' },
+    { name: 'num_transactions', displayName: 'Tx', description: 'The number of transactions for this creator.' },
+    { name: 'usd_value_of_transactions', displayName: 'USD Value', description: 'The USD value of the tx for this creator.' },
+    { name: 'num_farcaster_minters', displayName: 'Farcaster Minters', description: 'The number of Farcaster Minters for this creator.' },
+    { name: 'num_farcaster_transactions', displayName: 'Farcaster TX', description: 'The number of Farcaster Transactions for this creator.' },
+    
+]
+
 export const info = "Metrics are updated weekly and compiled based on open datasets sourced from Dune, Flipside, Goldsky, and Open Source Observer."
 
 export function getDisplayName(metric: string) {
-    return metrics.find(m => m.name === metric)?.displayName || metric;
+    return [...metrics, ...creatorMetrics].find(m => m.name === metric)?.displayName || metric;
 }
 
 export function getDescription(metric: string) {
-    return metrics.find(m => m.name === metric)?.description || '';
+    return [...metrics, ...creatorMetrics].find(m => m.name === metric)?.description || '';
 }
 
 
-export function getMetrics() {
-    return metrics.map(m => m.name);
+export function getMetrics(type: number) {
+    if (type === APP_METRICS_TYPE) {
+        return metrics.map(m => m.name);
+    } else {
+        return creatorMetrics.map(m => m.name);
+    }
 }
