@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { ImageResponse } from 'next/og';
 import { fetchApplications } from '@/services/ezrfApi';
 import ShareCardBare from './ShareCardBare';
+import { APP_METRICS_TYPE, CREATOR_METRICS_TYPE } from '@/services/metrics';
+import CreatorShareCardBare from './CreatorShareCardBare';
 
 
 async function getProject(id: string) {
@@ -23,10 +25,18 @@ export async function GET(request: NextRequest,  { params }: { params: { id: str
 
     if (project) {
 
-        return new ImageResponse((
-            <ShareCardBare
-                project={project}/>),
-            { width: 1200, height: 630 });
+        if (project.metrics?.metrics_type ===  APP_METRICS_TYPE){
+            return new ImageResponse((
+                <ShareCardBare
+                    project={project}/>),
+                { width: 1200, height: 630 });
+
+        }else if (project.metrics?.metrics_type ===  CREATOR_METRICS_TYPE){
+            return new ImageResponse((
+                <CreatorShareCardBare
+                    project={project}/>),
+                { width: 1200, height: 630 });
+        }
     }
     return new NextResponse(null, { status: 204, statusText: 'Page does not exist' });
 }

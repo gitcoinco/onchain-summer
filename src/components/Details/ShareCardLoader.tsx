@@ -19,7 +19,6 @@ export default function ShareCardLoader({
       <div className="flex pt-24 mx-auto">
         <ShareCard
           project={
-            
             projects.find(project => project.recipient === id || project?.applicationIds?.includes(id))
           }
           showClose={false}
