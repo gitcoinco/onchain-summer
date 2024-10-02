@@ -44,7 +44,7 @@ function CreatorTitle({ project }: Props) {
     return (
         <div className="w-full">
 
-            <h3 className="flex text-2xl font-bold leading-none">{project?.metadata?.name}</h3>
+            <h3 className="flex text-2xl font-bold leading-none">{project?.name}</h3>
 
         </div>
 

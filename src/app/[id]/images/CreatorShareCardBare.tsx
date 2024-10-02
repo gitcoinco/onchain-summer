@@ -62,7 +62,7 @@ export default function CreatorShareCardBare({
           maxLines: "2",
           blockOverflow: 'ellipsis',
         }}
-      >{project?.metadata.name}</p>
+      >{project?.name}</p>
 
 
       {/* --------- ROW 1 --------- */}
