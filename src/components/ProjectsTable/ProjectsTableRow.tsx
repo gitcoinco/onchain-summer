@@ -44,8 +44,8 @@ export function ProjectsTableRow({ project, onRowClick, metricType }: ProjectsTa
            }
           <span
             className="text-base font-normal truncate max-w-32 md:max-w-44"
-            title={project.name ? project.name : project.metadata.name}>
-            {project.name ? project.name : project.metadata.name}
+            title={project.name ? project.name : project.metrics.name}>
+            {project.name ? project.name : project.metrics.name}
           </span>
         </div>
       </td>
